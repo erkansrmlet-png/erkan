@@ -2,75 +2,81 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>QR Kod Doğrulama Sistemi</title>
+<title>QR Kod Rapor Sorgulama</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Arial;
-background:#f2f2f2;
-}
-
-/* üst bar */
-
-.header{
-background:#ffffff;
-padding:20px;
-border-bottom:1px solid #ddd;
-}
-
-.header h1{
-margin:0;
-font-size:22px;
-color:#333;
-}
-
-/* ana kutu */
-
-.container{
-width:500px;
-margin:120px auto;
-background:white;
-padding:40px;
-border-radius:8px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+font-family:Arial, Helvetica, sans-serif;
+background:#efefef;
 text-align:center;
 }
 
+/* başlık */
+
+.baslik{
+margin-top:80px;
+}
+
+.baslik h1{
+font-size:40px;
+margin:0;
+color:#333;
+font-weight:700;
+}
+
+.baslik h2{
+margin-top:15px;
+font-weight:500;
+color:#444;
+}
+
+.baslik p{
+color:#666;
+margin-top:5px;
+}
+
+/* arama alanı */
+
 input{
-width:80%;
-padding:12px;
-font-size:16px;
-border:1px solid #ccc;
-border-radius:4px;
+margin-top:50px;
+width:420px;
+padding:18px;
+font-size:20px;
+border-radius:8px;
+border:1px solid #cfcfcf;
+background:#f7f7f7;
 }
 
 /* turuncu buton */
 
 button{
-margin-top:20px;
-background:#ff7a00;
-color:white;
+margin-top:40px;
+width:80%;
+max-width:900px;
+padding:20px;
+font-size:24px;
+background:linear-gradient(90deg,#ff9900,#ff8800);
 border:none;
-padding:12px 30px;
-font-size:16px;
-border-radius:4px;
+border-radius:10px;
+color:white;
 cursor:pointer;
 }
 
 button:hover{
-background:#e66a00;
+background:linear-gradient(90deg,#ff8800,#ff7700);
 }
 
 #sonuc{
-margin-top:20px;
+margin-top:40px;
+font-size:18px;
 }
 
 a{
 display:block;
 margin-top:10px;
-color:#0073e6;
+font-size:18px;
 }
 
 </style>
@@ -78,23 +84,23 @@ color:#0073e6;
 
 <body>
 
-<div class="header">
-<h1>QR Kod Doğrulama Sistemi</h1>
+<div class="baslik">
+
+<h1>ANTAKYA BELEDİYESİ</h1>
+
+<h2>Qr Kod Rapor Sorgulama Ekranı</h2>
+
+<p>T.C. Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</p>
+
 </div>
 
-<div class="container">
-
-<h2>Belge Doğrulama</h2>
-
-<input type="text" id="tc" placeholder="TC Kimlik No Giriniz">
+<input type="text" id="tc" placeholder="T.C. Kimlik No">
 
 <br>
 
-<button onclick="sorgula()">Sorgula</button>
+<button onclick="sorgula()">🔍 Rapor Sorgula</button>
 
 <div id="sonuc"></div>
-
-</div>
 
 <script>
 
@@ -113,7 +119,7 @@ let html = "<h3>"+kisi.isim+"</h3>";
 
 kisi.evraklar.forEach(function(e){
 
-html += "<a href='"+e+"' target='_blank'>📄 Belgeyi Görüntüle</a>";
+html += "<a href='"+e+"' target='_blank'>📄 Raporu Görüntüle</a>";
 
 });
 
@@ -123,7 +129,7 @@ document.getElementById("sonuc").innerHTML = html;
 
 else{
 
-document.getElementById("sonuc").innerHTML = "Kayıt bulunamadı";
+document.getElementById("sonuc").innerHTML="Kayıt bulunamadı";
 
 }
 
