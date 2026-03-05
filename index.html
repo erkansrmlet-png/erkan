@@ -1,33 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Belge Doğrulama</title>
 <meta charset="UTF-8">
+<title>Belge Doğrulama Sistemi</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+margin-top:100px;
+}
+
+.kutu{
+background:white;
+width:400px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+padding:10px;
+width:80%;
+font-size:16px;
+}
+
+button{
+padding:10px 20px;
+margin-top:15px;
+font-size:16px;
+background:#2c7be5;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+a{
+display:block;
+margin-top:10px;
+}
+
+</style>
+
 </head>
 
-<body style="font-family:Arial;text-align:center;margin-top:100px">
+<body>
 
-<h1>Belge Doğrulama Sistemi</h1>
+<div class="kutu">
 
-<input type="text" id="belgeno" placeholder="Belge No Giriniz">
+<h2>Belge Doğrulama</h2>
 
-<br><br>
+<input type="text" id="tc" placeholder="TC Kimlik No">
 
-<button onclick="kontrol()">Doğrula</button>
+<br>
 
-<p id="sonuc"></p>
+<button onclick="sorgula()">Sorgula</button>
+
+<div id="sonuc"></div>
+
+</div>
 
 <script>
 
-function kontrol(){
+async function sorgula(){
 
-var belge = document.getElementById("belgeno").value;
+let tc = document.getElementById("tc").value;
 
-if(belge == "HBB-001"){
-document.getElementById("sonuc").innerHTML="✔ Belge geçerli";
+let veri = await fetch("veriler.json");
+let data = await veri.json();
+
+if(data[tc]){
+
+let kisi = data[tc];
+
+let html = "<h3>"+kisi.isim+"</h3>";
+
+kisi.evraklar.forEach(function(e){
+
+html += "<a href='"+e+"' target='_blank'>📄 Belgeyi Aç</a>";
+
+});
+
+document.getElementById("sonuc").innerHTML = html;
+
 }
+
 else{
-document.getElementById("sonuc").innerHTML="✖ Belge bulunamadı";
+
+document.getElementById("sonuc").innerHTML="Kayıt bulunamadı";
+
 }
 
 }
