@@ -1,59 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Belge Doğrulama Sistemi</title>
+<title>QR Kod Doğrulama Sistemi</title>
 
 <style>
 
 body{
+margin:0;
 font-family:Arial;
-background:#f5f5f5;
-text-align:center;
-margin-top:100px;
+background:#f2f2f2;
 }
 
-.kutu{
+/* üst bar */
+
+.header{
+background:#ffffff;
+padding:20px;
+border-bottom:1px solid #ddd;
+}
+
+.header h1{
+margin:0;
+font-size:22px;
+color:#333;
+}
+
+/* ana kutu */
+
+.container{
+width:500px;
+margin:120px auto;
 background:white;
-width:400px;
-margin:auto;
-padding:30px;
-border-radius:10px;
+padding:40px;
+border-radius:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
 }
 
 input{
-padding:10px;
 width:80%;
+padding:12px;
 font-size:16px;
+border:1px solid #ccc;
+border-radius:4px;
 }
 
+/* turuncu buton */
+
 button{
-padding:10px 20px;
-margin-top:15px;
-font-size:16px;
-background:#2c7be5;
+margin-top:20px;
+background:#ff7a00;
 color:white;
 border:none;
-border-radius:5px;
+padding:12px 30px;
+font-size:16px;
+border-radius:4px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e66a00;
+}
+
+#sonuc{
+margin-top:20px;
 }
 
 a{
 display:block;
 margin-top:10px;
+color:#0073e6;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="kutu">
+<div class="header">
+<h1>QR Kod Doğrulama Sistemi</h1>
+</div>
+
+<div class="container">
 
 <h2>Belge Doğrulama</h2>
 
-<input type="text" id="tc" placeholder="TC Kimlik No">
+<input type="text" id="tc" placeholder="TC Kimlik No Giriniz">
 
 <br>
 
@@ -80,7 +113,7 @@ let html = "<h3>"+kisi.isim+"</h3>";
 
 kisi.evraklar.forEach(function(e){
 
-html += "<a href='"+e+"' target='_blank'>📄 Belgeyi Aç</a>";
+html += "<a href='"+e+"' target='_blank'>📄 Belgeyi Görüntüle</a>";
 
 });
 
@@ -90,7 +123,7 @@ document.getElementById("sonuc").innerHTML = html;
 
 else{
 
-document.getElementById("sonuc").innerHTML="Kayıt bulunamadı";
+document.getElementById("sonuc").innerHTML = "Kayıt bulunamadı";
 
 }
 
