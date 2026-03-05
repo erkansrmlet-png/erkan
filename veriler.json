@@ -1,0 +1,16 @@
+{
+ "12345678901": {
+  "isim": "Ahmet Yılmaz",
+  "evraklar": [
+   "evraklar/proje.pdf",
+   "evraklar/kabul.pdf"
+  ]
+ },
+
+ "11111111111": {
+  "isim": "Mehmet Kaya",
+  "evraklar": [
+   "evraklar/rapor.pdf"
+  ]
+ }
+}
