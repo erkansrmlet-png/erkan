@@ -2,81 +2,88 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>QR Kod Rapor Sorgulama</title>
+<title>Qr Code Rapor Sorgulama</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#efefef;
+font-family:Arial;
+background:#f2f2f2;
+}
+
+/* üst bar */
+
+.topbar{
+padding:15px 30px;
+border-bottom:3px solid #2d7df6;
+background:white;
+font-size:20px;
+}
+
+/* orta alan */
+
+.container{
 text-align:center;
+margin-top:120px;
 }
 
 /* başlık */
 
-.baslik{
-margin-top:80px;
+h1{
+font-size:32px;
+margin-bottom:10px;
 }
 
-.baslik h1{
-font-size:40px;
+h2{
+font-size:20px;
 margin:0;
-color:#333;
-font-weight:700;
 }
 
-.baslik h2{
-margin-top:15px;
-font-weight:500;
-color:#444;
-}
-
-.baslik p{
+p{
 color:#666;
-margin-top:5px;
 }
 
-/* arama alanı */
+/* input */
 
 input{
-margin-top:50px;
-width:420px;
-padding:18px;
-font-size:20px;
-border-radius:8px;
-border:1px solid #cfcfcf;
-background:#f7f7f7;
+margin-top:30px;
+width:350px;
+padding:15px;
+font-size:18px;
+border-radius:6px;
+border:2px solid #2d7df6;
 }
 
-/* turuncu buton */
+/* buton */
 
 button{
-margin-top:40px;
-width:80%;
-max-width:900px;
-padding:20px;
-font-size:24px;
-background:linear-gradient(90deg,#ff9900,#ff8800);
-border:none;
-border-radius:10px;
+margin-top:30px;
+width:650px;
+max-width:90%;
+padding:18px;
+font-size:20px;
+background:#ff8c00;
 color:white;
+border:none;
+border-radius:6px;
 cursor:pointer;
 }
 
 button:hover{
-background:linear-gradient(90deg,#ff8800,#ff7700);
+background:#e67e00;
 }
 
-#sonuc{
-margin-top:40px;
-font-size:18px;
-}
+/* footer */
 
-a{
-display:block;
-margin-top:10px;
-font-size:18px;
+.footer{
+position:fixed;
+bottom:0;
+width:100%;
+text-align:center;
+padding:10px;
+background:white;
+border-top:1px solid #ccc;
 }
 
 </style>
@@ -84,58 +91,29 @@ font-size:18px;
 
 <body>
 
-<div class="baslik">
+<div class="topbar">
+Qr Code Rapor Sorgulama
+</div>
+
+<div class="container">
 
 <h1>ANTAKYA BELEDİYESİ</h1>
 
 <h2>Qr Kod Rapor Sorgulama Ekranı</h2>
 
-<p>T.C. Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</p>
+<p>T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</p>
 
-</div>
-
-<input type="text" id="tc" placeholder="T.C. Kimlik No">
+<input type="text" placeholder="T.C. Kimlik No">
 
 <br>
 
-<button onclick="sorgula()">🔍 Rapor Sorgula</button>
+<button>🔍 Rapor Sorgula</button>
 
-<div id="sonuc"></div>
+</div>
 
-<script>
-
-async function sorgula(){
-
-let tc = document.getElementById("tc").value;
-
-let veri = await fetch("veriler.json");
-let data = await veri.json();
-
-if(data[tc]){
-
-let kisi = data[tc];
-
-let html = "<h3>"+kisi.isim+"</h3>";
-
-kisi.evraklar.forEach(function(e){
-
-html += "<a href='"+e+"' target='_blank'>📄 Raporu Görüntüle</a>";
-
-});
-
-document.getElementById("sonuc").innerHTML = html;
-
-}
-
-else{
-
-document.getElementById("sonuc").innerHTML="Kayıt bulunamadı";
-
-}
-
-}
-
-</script>
+<div class="footer">
+© 2026 Belsoft Bilgi Sistemleri
+</div>
 
 </body>
 </html>
