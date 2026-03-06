@@ -12,14 +12,20 @@ font-family:Arial;
 background:white;
 }
 
-/* üst bar */
+/* üst alan */
 
-.topbar{
-padding:10px 30px 6px 30px;
-border-bottom:3px solid #2d7df6;
-background:white;
+.header{
+padding:15px 80px 5px 80px;
+}
+
+.title{
 font-size:16px;
-font-weight:500;
+}
+
+.bluebar{
+height:3px;
+background:#2d7df6;
+margin-top:6px;
 }
 
 /* orta alan */
@@ -29,20 +35,18 @@ text-align:center;
 margin-top:140px;
 }
 
-/* başlık */
-
 h1{
 font-size:30px;
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
-h2{
+.sub{
 font-size:18px;
-margin:0;
+font-weight:normal;
 }
 
-p{
-color:#666;
+.desc{
+color:black;
 margin-top:5px;
 }
 
@@ -95,17 +99,27 @@ color:#555;
 
 <body>
 
-<div class="topbar">
+<div class="header">
+
+<div class="title">
 Qr Code Rapor Sorgulama
+</div>
+
+<div class="bluebar"></div>
+
 </div>
 
 <div class="container">
 
 <h1>ANTAKYA BELEDİYESİ</h1>
 
-<h2>Qr Kod Rapor Sorgulama Ekranı</h2>
+<div class="sub">
+Qr Kod Rapor Sorgulama Ekranı
+</div>
 
-<p>T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</p>
+<div class="desc">
+T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
+</div>
 
 <input type="text" placeholder="T.C. Kimlik No">
 
