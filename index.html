@@ -19,14 +19,14 @@ padding:2px 32px 10px 32px;
 }
 
 .title{
-font-size:16.23px;
-margin-top:32.8px;
+font-size:16px;
+margin-top:32px;
 }
 
 .bluebar{
 height:2px;
 background:#2d7df6;
-margin-top:3.2px;
+margin-top:3px;
 }
 
 /* orta alan */
@@ -44,7 +44,7 @@ margin-bottom:5px;
 .sub{
 font-size:16px;
 font-weight:normal;
-margin-top:7.1px;
+margin-top:7px;
 }
 
 .desc{
@@ -53,15 +53,45 @@ font-size:12px;
 margin-top:5px;
 }
 
-/* input */
+/* input alanı */
 
-input{
-margin-top:35px;
+.input-group{
+position:relative;
 width:320px;
-padding:12px;
+margin:35px auto 0 auto;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
 font-size:15px;
 border-radius:6px;
-border:2px solid #2d7df6;
+border:2px solid #ccc;
+outline:none;
+transition:0.2s;
+}
+
+.input-group input:focus{
+border-color:#2d7df6;
+}
+
+.input-group label{
+position:absolute;
+left:12px;
+top:14px;
+color:#777;
+font-size:14px;
+background:white;
+padding:0 4px;
+transition:0.2s;
+pointer-events:none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label{
+top:-8px;
+font-size:12px;
+color:#2d7df6;
 }
 
 /* buton */
@@ -124,7 +154,10 @@ Qr Kod Rapor Sorgulama Ekranı
 T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 </div>
 
-<input type="text" placeholder="T.C. Kimlik No">
+<div class="input-group">
+<input type="text" required>
+<label>T.C. Kimlik No</label>
+</div>
 
 <br>
 
