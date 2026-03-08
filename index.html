@@ -103,15 +103,25 @@ width:564px;
 max-width:90%;
 padding:7.5px;
 font-size:16px;
-background:#ff8c00;
 color:white;
 border:none;
 border-radius:6px;
 cursor:pointer;
+
+background:linear-gradient(90deg,#ffa000,#ff8c00);
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 }
 
 button:hover{
-background:#e67e00;
+background:linear-gradient(90deg,#ff8c00,#e67600);
+}
+
+.icon{
+font-size:22px;
 }
 
 /* footer */
@@ -162,7 +172,10 @@ T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 
 <br>
 
-<button>🔍 Rapor Sorgula</button>
+<button>
+<span class="icon">🔍</span>
+Rapor Sorgula
+</button>
 
 </div>
 
