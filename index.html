@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -128,6 +129,44 @@ font-size:14px;
 color:#555;
 }
 
+/* MODAL (EVRAK AÇILAN KISIM) */
+
+.modal{
+display:none;
+position:fixed;
+z-index:999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+.modal-content{
+background:white;
+margin:4% auto;
+width:85%;
+max-width:1200px;
+border-radius:6px;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+.modal-header{
+padding:10px;
+text-align:right;
+border-bottom:1px solid #ddd;
+}
+
+.close{
+font-size:22px;
+cursor:pointer;
+}
+
+.modal-body{
+padding:20px;
+text-align:center;
+}
+
 </style>
 </head>
 
@@ -162,7 +201,7 @@ T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 
 <br>
   
-<button>🔍 Rapor Sorgula</button>
+<button onclick="openModal()">🔍 Rapor Sorgula</button>
 
 </div>
 
@@ -170,5 +209,40 @@ T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 Belsoft Bilgi Sistemleri © 2026
 </div>
 
+
+<!-- EVRAK AÇILAN POPUP -->
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+<span class="close" onclick="closeModal()">✕</span>
+</div>
+
+<div class="modal-body">
+
+<img src="evrak.jpg" style="width:100%;">
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openModal(){
+document.getElementById("modal").style.display="block";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+</script>
+
 </body>
 </html>
+```
