@@ -34,6 +34,7 @@ margin-top:3.2px;
 .container{
 text-align:center;
 margin-top:236px;
+position:relative; /* EKLENDİ */
 }
 
 h1{
@@ -56,9 +57,11 @@ margin-top:5px;
 /* input alanı */
 
 .input-group{
+position:absolute;
 width:228px;
-margin:20px auto;
-position:relative;
+top:120px;  /* aşağı yukarı buradan ayarla */
+left:50%;
+transform:translateX(-50%);
 }
 
 .input-group input{
@@ -97,8 +100,7 @@ color:#2d7df6;
 /* buton */
 
 button{
-margin-top:-6.9px;
-margin-right:-1px;
+margin-top:60px;
 width:564px;
 max-width:90%;
 padding:7.5px;
@@ -128,7 +130,7 @@ font-size:14px;
 color:#555;
 }
 
-/* MODAL (EVRAK AÇILAN KISIM) */
+/* MODAL */
 
 .modal{
 display:none;
@@ -210,9 +212,6 @@ T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 Belsoft Bilgi Sistemleri © 2026
 </div>
 
-
-<!-- EVRAK AÇILAN POPUP -->
-
 <div id="modal" class="modal">
 
 <div class="modal-content">
@@ -230,7 +229,6 @@ Belsoft Bilgi Sistemleri © 2026
 </div>
 
 </div>
-
 
 <script>
 
