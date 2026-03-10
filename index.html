@@ -105,10 +105,11 @@ top:150px;
 left:50%;
 transform:translateX(-50%);
 
-width:90%;
-max-width:723px;
+width:85%;        /* ekran küçülünce daha fazla küçülür */
+max-width:723px;  /* büyük ekranda en fazla bu kadar olur */
+min-width:260px;  /* çok küçülmesini engeller */
 
-padding:4px;
+padding:6px;
 font-family:Helvetica;
 font-size:15px;
 background:linear-gradient(to bottom,#ffa726,#fb8c00);
