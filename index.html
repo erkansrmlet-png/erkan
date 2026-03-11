@@ -159,24 +159,24 @@ button:hover{
 }
 
 /* alt beyaz bar - KAPAT butonu sağ alt */
+
 .modal-footer{
-    background:white;
+    position:relative; /* absolute kullanabilmek için */
     padding:12px 20px;
+    background:white;
     border-top:1px solid #ddd;
-    display:flex;
-    justify-content:flex-end; /* sağ tarafa yaslar */
-    align-items:center;
 }
 
-/* modal-footer button */
 .modal-footer button{
+    position:absolute;
+    left:50%;     /* yatay ortalar */
+    top:50%;      /* dikey ortalar */
+    transform:translate(-50%, -50%);
     background:none;
     border:none;
     color:#1976d2;
     font-size:14px;
     cursor:pointer;
-    margin-left:auto;   /* sağa yaslamak */
-    margin-right:auto;
 }
 
 /* modal close ikon (üst sağ köşe) */
