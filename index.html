@@ -131,6 +131,7 @@ button:hover{
     background:rgba(0,0,0,0.5);
 }
 .modal-content{
+    position: relative; /* button için referans */
     background:#bfbfbf;
     margin:2.6% auto;
     width:90%;
@@ -139,6 +140,7 @@ button:hover{
     box-shadow:0 15px 40px rgba(0,0,0,0.4);
     display:flex;
     flex-direction:column;
+    padding-bottom:60px; /* KAPAT buton için boşluk */
 }
 
 /* üst beyaz bar */
@@ -158,23 +160,16 @@ button:hover{
     text-align:center;
 }
 
-/* alt beyaz bar - KAPAT butonu sağ alt */
-.modal-footer{
-    background:white;
-    padding:12px 20px;
-    border-top:1px solid #ddd;
-    display:flex;
-    justify-content:flex-end; /* sağ tarafa yaslar */
-    align-items:center;
-}
-
-/* modal-footer button */
-.modal-footer button{
-    background:none;
-    border:none;
-    color:#1976d2;
-    font-size:14px;
-    cursor:pointer;
+/* KAPAT butonu modal-content’in sağ altına sabit */
+.modal-close-btn {
+    position: absolute;
+    bottom:10px;   /* modal-content’in altından 10px yukarı */
+    right:20px;    /* sağdan 20px içeride */
+    background: none;
+    border: none;
+    color: #1976d2;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 /* modal close ikon (üst sağ köşe) */
@@ -226,9 +221,8 @@ button:hover{
             <img src="evrak.jpg" style="width:86.1%; background:white; box-shadow:0 4px 15px rgba(0,0,0,0.25);">
         </div>
 
-        <div class="modal-footer">
-            <button onclick="closeModal()">KAPAT</button>
-        </div>
+        <!-- KAPAT butonu modal-footer yerine buraya alındı -->
+        <button class="modal-close-btn" onclick="closeModal()">KAPAT</button>
 
     </div>
 </div>
