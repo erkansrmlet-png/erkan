@@ -34,7 +34,7 @@ margin-top:3.2px;
 .container{
 text-align:center;
 margin-top:236px;
-position:relative; /* container referansı için */
+position:relative;
 }
 
 h1{
@@ -59,9 +59,9 @@ margin-top:5px;
 .input-group{
 position:absolute;
 width:228px;
-top:96.6px;          /* aşağı yukarı ayar */
-left:50%;           /* yatay ortalama referansı */
-transform:translateX(-56%); /* ortada, -50% ile tam ortada. Negatif artırırsan sola, azaltırsan sağa kayar */
+top:96.6px;
+left:50%;
+transform:translateX(-56%);
 }
 
 .input-group input{
@@ -71,7 +71,6 @@ font-size:15px;
 border-radius:6px;
 border:1px solid #ccc;
 outline:none;
-transition:0.2s;
 }
 
 .input-group input:focus{
@@ -81,9 +80,9 @@ border-color:#2d7df6;
 .input-group label{
 position:absolute;
 left:10px;
-top:11.1px;
+top:11px;
 color:#ccc;
-font-size:14.3px;
+font-size:14px;
 background:white;
 padding:0 4px;
 transition:0.2s;
@@ -104,11 +103,9 @@ position:absolute;
 top:150.5px;
 left:50%;
 transform:translateX(-50%);
-
-width:55%;        /* çok daha fazla küçülür */
-max-width:723px;  /* büyük ekranda maksimum */
-min-width:120px;  /* çok küçülmesini engeller */
-
+width:55%;
+max-width:723px;
+min-width:120px;
 padding:4px;
 font-family:Helvetica;
 font-size:14.5px;
@@ -151,39 +148,47 @@ background:rgba(0,0,0,0.45);
 }
 
 .modal-content{
-background:#f5f5f5;
+background:#eeeeee;
 margin:3% auto;
 width:90%;
 max-width:1250px;
 border-radius:6px;
 box-shadow:0 15px 40px rgba(0,0,0,0.5);
+display:flex;
+flex-direction:column;
 }
 
+/* üst beyaz bar */
+
 .modal-header{
-padding:10px;
-text-align:right;
+background:white;
+padding:18px 25px;
 border-bottom:1px solid #ddd;
+height:40px;
+}
+
+/* evrak alanı */
+
+.modal-body{
+background:#eeeeee;
+padding:30px;
+text-align:center;
+max-height:70vh;
+overflow-y:auto;
+}
+
+/* alt beyaz bar */
+
+.modal-footer{
+background:white;
+padding:18px 25px;
+border-top:1px solid #ddd;
+text-align:right;
 }
 
 .close{
 font-size:22px;
 cursor:pointer;
-}
-
-.modal-body{
-padding:20px;
-text-align:center;
-max-height:80vh;
-overflow-y:auto;
-<div style="text-align:right;padding:15px 25px;">
-<button onclick="closeModal()" style="
-background:none;
-border:none;
-color:#1976d2;
-font-size:14px;
-cursor:pointer;
-">KAPAT</button>
-</div>
 }
 
 </style>
@@ -219,7 +224,7 @@ T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.
 </div>
 
 <br>
-  
+
 <button onclick="openModal()">🔍 Rapor Sorgula</button>
 
 </div>
@@ -242,11 +247,12 @@ Belsoft Bilgi Sistemleri © 2026
 
 <div class="modal-body">
 
-<img src="evrak.jpg" style="width:100%;">
+<img src="evrak.jpg" style="width:900px;max-width:100%;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
 
 </div>
 
-<div style="text-align:right;padding:15px 25px;background:#f5f5f5;">
+<div class="modal-footer">
+
 <button onclick="closeModal()" style="
 background:none;
 border:none;
@@ -254,6 +260,7 @@ color:#1976d2;
 font-size:14px;
 cursor:pointer;
 ">KAPAT</button>
+
 </div>
 
 </div>
