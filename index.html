@@ -156,6 +156,7 @@ border-radius:6px;
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
 display:flex;
 flex-direction:column;
+position: relative; /* KAPAT butonunun absolute için gerekli */
 }
 
 /* üst beyaz bar */
@@ -184,17 +185,18 @@ background:white;
 padding:18px 25px;
 border-top:1px solid #ddd;
 text-align:right;
-display: flex;
-justify-content: flex-end; /* sağ alt köşeye yaslar */
-align-items: center;
 }
 
-.modal-footer button{
-background:none;
-border:none;
-color:#1976d2;
-font-size:14px;
-cursor:pointer;
+/* KAPAT butonu modal-content’in sağ alt köşesine sabitlendi */
+.modal-close-btn{
+position: absolute;
+bottom:20px;  /* alt boşluk */
+right:25px;   /* sağ boşluk */
+background: none;
+border: none;
+color: #1976d2;
+font-size: 14px;
+cursor: pointer;
 }
 
 .close{
@@ -262,11 +264,8 @@ Belsoft Bilgi Sistemleri © 2026
 
 </div>
 
-<div class="modal-footer">
-
-<button onclick="closeModal()">KAPAT</button>
-
-</div>
+<!-- KAPAT butonu modal-content’in sağ alt köşesinde -->
+<button class="modal-close-btn" onclick="closeModal()">KAPAT</button>
 
 </div>
 
