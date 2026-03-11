@@ -170,7 +170,7 @@ height:40px;
 /* gri evrak alanı */
 
 .modal-body{
-background: rgba(0, 0, 0, 0.32); /* siyaha yakın, %70 opaklık */
+background: rgba(0, 0, 0, 0.5); /* daha koyu gri */
 padding:30px 20px 20px 20px;
 max-height:70vh;
 overflow-y:auto;
@@ -184,6 +184,17 @@ background:white;
 padding:18px 25px;
 border-top:1px solid #ddd;
 text-align:right;
+display: flex;
+justify-content: flex-end; /* sağ alt köşeye yaslar */
+align-items: center;
+}
+
+.modal-footer button{
+background:none;
+border:none;
+color:#1976d2;
+font-size:14px;
+cursor:pointer;
 }
 
 .close{
@@ -253,13 +264,7 @@ Belsoft Bilgi Sistemleri © 2026
 
 <div class="modal-footer">
 
-<button onclick="closeModal()" style="
-background:none;
-border:none;
-color:#1976d2;
-font-size:14px;
-cursor:pointer;
-">KAPAT</button>
+<button onclick="closeModal()">KAPAT</button>
 
 </div>
 
