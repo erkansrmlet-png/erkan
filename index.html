@@ -207,6 +207,34 @@ cursor:pointer;
 cursor:pointer;
 }
 
+/* ekran küçülünce modal değişsin */
+
+@media screen and (max-width:900px){
+
+.modal-body img{
+display:none; /* evrak gizlenir */
+}
+
+.modal-body::before{
+content:"PDF hazır. Yukarıdan Görüntüle butonuna basarak açabilirsiniz.";
+display:block;
+font-size:38px;
+text-align:center;
+margin-top:200px;
+color:#222;
+}
+
+.modal-header{
+height:auto;
+padding:20px;
+}
+
+.modal-icons{
+gap:20px;
+}
+
+}
+  
 </style>
 </head>
 
