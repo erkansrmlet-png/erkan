@@ -203,6 +203,10 @@ font-size:14px;
 cursor:pointer;
 }
 
+.icon{
+cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -261,24 +265,13 @@ Belsoft Bilgi Sistemleri © 2026
 <div class="modal-icons">
 
 <!-- PDF -->
-<svg onclick="downloadPDF()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" style="cursor:pointer;">
-<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-<polyline points="14 2 14 8 20 8"/>
-<text x="7" y="18" font-size="7" fill="black">PDF</text>
-</svg>
+<img src="pdf.png" width="30" class="icon" onclick="downloadPDF()">
 
 <!-- EXCEL -->
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" style="opacity:0.6;">
-<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-<polyline points="14 2 14 8 20 8"/>
-<text x="7" y="18" font-size="7" fill="black">X</text>
-</svg>
+<img src="excel.png" width="30">
 
-<!-- KAPAT -->
-<svg onclick="closeModal()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" style="cursor:pointer;">
-<line x1="18" y1="6" x2="6" y2="18"/>
-<line x1="6" y1="6" x2="18" y2="18"/>
-</svg>
+<!-- CLOSE -->
+<img src="close.png" width="28" class="icon" onclick="closeModal()">
 
 </div>
 
@@ -307,12 +300,10 @@ document.getElementById("modal").style.display="none";
 }
 
 function downloadPDF(){
-
 var link=document.createElement("a");
 link.href="evrak.jpg";
 link.download="rapor.pdf";
 link.click();
-
 }
 
 </script>
