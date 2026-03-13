@@ -207,20 +207,77 @@ cursor:pointer;
 cursor:pointer;
 }
 
-/* ekran küçülünce modal değişsin */
+/* ekran küçülünce görünüm değişsin */
+
+.mobile-buttons{
+display:none;
+}
 
 @media screen and (max-width:900px){
+
+/* üst bar beyaz */
+
+.modal-header{
+background:white;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:flex-end;
+}
+
+/* ikonları gizle */
+
+.modal-icons{
+display:none;
+}
+
+/* yeni butonlar */
+
+.mobile-buttons{
+display:flex;
+gap:20px;
+margin-right:20px;
+}
+
+.mobile-buttons button{
+position:relative;
+left:auto;
+top:auto;
+transform:none;
+width:auto;
+height:50px;
+padding:10px 24px;
+font-size:28px;
+border-radius:10px;
+}
+
+/* renkler */
+
+.btn-view{
+background:#43a047;
+}
+
+.btn-download{
+background:#3f88c5;
+}
+
+.btn-close{
+background:#e74c3c;
+}
+
+/* evrak gizle */
+
+.modal-body img{
+display:none;
+}
+
+/* gri alan yazısı */
 
 .modal-body{
 display:flex;
 align-items:center;
 justify-content:center;
-background:#7f7f7f;
-height:100%;
-}
-
-.modal-body img{
-display:none;
+background:white;
 }
 
 .modal-body::before{
@@ -230,16 +287,6 @@ color:#222;
 text-align:center;
 max-width:900px;
 line-height:1.3;
-}
-
-.modal-header{
-background:#e6e6e6;
-height:90px;
-}
-
-.modal-footer{
-background:#e6e6e6;
-height:90px;
 }
 
 }
