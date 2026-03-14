@@ -193,7 +193,7 @@ text-align:center;
 
 .warning-buttons{
 position:fixed;
-top:25px;
+top:90px;
 right:40px;
 display:flex;
 gap:20px;
@@ -240,7 +240,7 @@ display:none;
 
 .modal-footer{
 position:relative;
-padding:25px 20px;
+padding:10px 20px;
 background:white;
 border-top:1px solid #ddd;
 }
@@ -248,8 +248,8 @@ border-top:1px solid #ddd;
 .modal-footer button{
 position:absolute;
 left:95%;
-top:50%;
-transform:translate(-50%,-50%);
+top:-10px;
+transform:translate(-50%,0);
 background:none;
 border:none;
 color:#1976d2;
@@ -325,8 +325,8 @@ Belsoft Bilgi Sistemleri © 2026
 <div class="pdf-warning">
 
 <div class="warning-buttons">
-<button class="g">Görüntüle</button>
-<button class="b">İndir</button>
+<button class="g" onclick="openDocument()">Görüntüle</button>
+<button class="b" onclick="downloadPDF()">İndir</button>
 <button class="r" onclick="closeModal()">Kapat</button>
 </div>
 
@@ -363,6 +363,11 @@ var link=document.createElement("a");
 link.href="evrak.jpg";
 link.download="rapor.pdf";
 link.click();
+}
+
+function openDocument(){
+document.querySelector(".evrak").style.display="block";
+document.querySelector(".pdf-warning").style.display="none";
 }
 
 </script>
