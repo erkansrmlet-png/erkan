@@ -185,14 +185,69 @@ padding:30px 20px;
 flex:1;
 overflow:auto;
 text-align:center;
+position:relative;
 }
 
-.modal-body img{
+.evrak{
 max-width:900px;
 width:100%;
 height:auto;
 background:white;
 box-shadow:0 4px 15px rgba(0,0,0,0.25);
+}
+
+/* PDF hazır ekranı */
+
+.pdf-warning{
+display:none;
+height:100%;
+width:100%;
+background:#e6e6e6;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+}
+
+.warning-buttons{
+position:absolute;
+top:20px;
+right:30px;
+display:flex;
+gap:15px;
+}
+
+.warning-buttons button{
+padding:12px 25px;
+font-size:22px;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
+}
+
+.g{background:#3aa189;}
+.b{background:#3a7fb0;}
+.r{background:#e74c3c;}
+
+.warning-text{
+font-size:55px;
+color:#333;
+max-width:900px;
+}
+
+/* ekran küçülünce */
+
+@media (max-width:1000px){
+
+.evrak{
+display:none;
+}
+
+.pdf-warning{
+display:flex;
+}
+
 }
 
 /* alt bar */
@@ -244,18 +299,6 @@ cursor:pointer;
 </div>
 
 <button onclick="openModal()">
-
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
-<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
-6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
-4.23-1.57l.27.28v.79l5 
-4.99L20.49 19l-4.99-5zm-6 
-0C7.01 14 5 11.99 5 
-9.5S7.01 5 9.5 5 14 
-7.01 14 9.5 11.99 14 
-9.5 14z"/>
-</svg>
-
 Rapor Sorgula
 </button>
 
@@ -265,8 +308,6 @@ Rapor Sorgula
 Belsoft Bilgi Sistemleri © 2026
 </div>
 
-<!-- MODAL -->
-
 <div id="modal" class="modal">
 
 <div class="modal-content">
@@ -274,17 +315,31 @@ Belsoft Bilgi Sistemleri © 2026
 <div class="modal-header">
 
 <div class="modal-icons">
-
 <img src="pdf.png" width="35" class="icon" onclick="downloadPDF()">
 <img src="excel.png" width="35">
 <img src="close.png" width="32" class="icon" onclick="closeModal()">
-
 </div>
 
 </div>
 
 <div class="modal-body">
-<img src="evrak.jpg">
+
+<div class="pdf-warning">
+
+<div class="warning-buttons">
+<button class="g">Görüntüle</button>
+<button class="b">İndir</button>
+<button class="r" onclick="closeModal()">Kapat</button>
+</div>
+
+<div class="warning-text">
+PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
+</div>
+
+</div>
+
+<img src="evrak.jpg" class="evrak">
+
 </div>
 
 <div class="modal-footer">
