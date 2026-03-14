@@ -15,8 +15,6 @@ flex-direction:column;
 min-height:100vh;
 }
 
-/* üst alan */
-
 .header{
 padding:2px 32px 10px 32px;
 }
@@ -31,8 +29,6 @@ height:2px;
 background:#2d7df6;
 margin-top:3.2px;
 }
-
-/* orta alan */
 
 .container{
 flex:1;
@@ -60,8 +56,6 @@ color:black;
 font-size:12px;
 margin-top:6px;
 }
-
-/* input */
 
 .input-group{
 margin-top:25px;
@@ -101,8 +95,6 @@ font-size:12px;
 color:#2d7df6;
 }
 
-/* buton */
-
 button{
 margin-top:25px;
 width:230px;
@@ -124,8 +116,6 @@ box-shadow:0 3px 10px rgba(0,0,0,0.2);
 background:#e67e00;
 }
 
-/* footer */
-
 .footer{
 text-align:center;
 padding:14px;
@@ -134,8 +124,6 @@ border-top:1px solid #ccc;
 font-size:14px;
 color:#555;
 }
-
-/* MODAL */
 
 .modal{
 display:none;
@@ -161,8 +149,6 @@ display:flex;
 flex-direction:column;
 }
 
-/* üst bar */
-
 .modal-header{
 background:white;
 padding:16px 25px;
@@ -176,8 +162,6 @@ display:flex;
 gap:24px;
 align-items:center;
 }
-
-/* evrak alanı */
 
 .modal-body{
 background:rgba(0,0,0,0.34);
@@ -196,8 +180,6 @@ background:white;
 box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
-/* PDF hazır ekranı */
-
 .pdf-warning{
 display:none;
 height:100%;
@@ -210,11 +192,12 @@ text-align:center;
 }
 
 .warning-buttons{
-position:absolute;
-top:20px;
-right:30px;
+position:fixed;
+top:25px;
+right:40px;
 display:flex;
-gap:15px;
+gap:20px;
+z-index:1000;
 }
 
 .warning-buttons button{
@@ -224,6 +207,9 @@ border:none;
 border-radius:10px;
 color:white;
 cursor:pointer;
+width:auto;
+height:auto;
+margin:0;
 }
 
 .g{background:#3aa189;}
@@ -236,8 +222,6 @@ color:#333;
 max-width:900px;
 }
 
-/* ekran küçülünce */
-
 @media (max-width:1000px){
 
 .evrak{
@@ -248,9 +232,11 @@ display:none;
 display:flex;
 }
 
+.modal-icons{
+display:none;
 }
 
-/* alt bar */
+}
 
 .modal-footer{
 position:relative;
@@ -299,6 +285,18 @@ cursor:pointer;
 </div>
 
 <button onclick="openModal()">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
+<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
+6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
+4.23-1.57l.27.28v.79l5 
+4.99L20.49 19l-4.99-5zm-6 
+0C7.01 14 5 11.99 5 
+9.5S7.01 5 9.5 5 14 
+7.01 14 9.5 11.99 14 
+9.5 14z"/>
+</svg>
+
 Rapor Sorgula
 </button>
 
