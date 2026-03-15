@@ -43,7 +43,6 @@ padding:40px 20px;
 h1{
 font-size:20px;
 margin-bottom:5px;
-margin-top:25px;
 }
 
 .sub{
@@ -98,8 +97,7 @@ color:#2d7df6;
 
 button{
 margin-top:25px;
-width:750px;
-max-width:50%;
+width:230px;
 height:35px;
 padding:7px 20px 5px 10px;
 font-family:Helvetica;
@@ -120,12 +118,11 @@ background:#e67e00;
 
 .footer{
 text-align:center;
-padding:20px;
-background:white;
+padding:14px;
+background:#f1f1f1;
 border-top:1px solid #ccc;
 font-size:14px;
 color:#555;
-box-shadow:0 4px 10px rgba(0,0,0,0.5);
 }
 
 .modal{
@@ -142,7 +139,7 @@ align-items:center;
 }
 
 .modal-content{
-background:white;
+background:#bfbfbf;
 width:90%;
 max-width:1200px;
 height:90%;
@@ -157,7 +154,6 @@ background:white;
 padding:16px 25px;
 border-bottom:1px solid #ddd;
 height:40px;
-position:relative;
 }
 
 .modal-icons{
@@ -168,7 +164,7 @@ align-items:center;
 }
 
 .modal-body{
-background:white;
+background:rgba(0,0,0,0.34);
 padding:30px 20px;
 flex:1;
 overflow:auto;
@@ -188,7 +184,7 @@ box-shadow:0 4px 15px rgba(0,0,0,0.25);
 display:none;
 height:100%;
 width:100%;
-background:white;
+background:#e6e6e6;
 align-items:center;
 justify-content:center;
 flex-direction:column;
@@ -196,21 +192,23 @@ text-align:center;
 }
 
 .warning-buttons{
-position:absolute;
-right:30px;
-top:50%;
-transform:translateY(-50%);
+position:fixed;
+top:90px;
+right:40px;
 display:flex;
-gap:15px;
+gap:20px;
+z-index:1000;
 }
 
 .warning-buttons button{
-padding:10px 20px;
-font-size:16px;
+padding:12px 25px;
+font-size:22px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 color:white;
 cursor:pointer;
+width:auto;
+height:auto;
 margin:0;
 }
 
@@ -219,9 +217,9 @@ margin:0;
 .r{background:#e74c3c;}
 
 .warning-text{
-font-size:42px;
+font-size:55px;
 color:#333;
-max-width:800px;
+max-width:900px;
 }
 
 @media (max-width:1000px){
@@ -242,7 +240,7 @@ display:none;
 
 .modal-footer{
 position:relative;
-padding:25px 20px;
+padding:10px 20px;
 background:white;
 border-top:1px solid #ddd;
 }
@@ -304,7 +302,9 @@ Rapor Sorgula
 
 </div>
 
-<div class="footer"></div>
+<div class="footer">
+Belsoft Bilgi Sistemleri © 2026
+</div>
 
 <div id="modal" class="modal">
 
@@ -312,16 +312,10 @@ Rapor Sorgula
 
 <div class="modal-header">
 
-<div class="warning-buttons">
-<button class="g" onclick="openDocument()">Görüntüle</button>
-<button class="b" onclick="downloadPDF()">İndir</button>
-<button class="r" onclick="closeModal()">Kapat</button>
-</div>
-
 <div class="modal-icons">
-<img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
-<img src="excel.png" width="38">
-<img src="close.png" width="35" class="icon" onclick="closeModal()">
+<img src="pdf.png" width="35" class="icon" onclick="downloadPDF()">
+<img src="excel.png" width="35">
+<img src="close.png" width="32" class="icon" onclick="closeModal()">
 </div>
 
 </div>
@@ -329,6 +323,12 @@ Rapor Sorgula
 <div class="modal-body">
 
 <div class="pdf-warning">
+
+<div class="warning-buttons">
+<button class="g" onclick="openDocument()">Görüntüle</button>
+<button class="b" onclick="downloadPDF()">İndir</button>
+<button class="r" onclick="closeModal()">Kapat</button>
+</div>
 
 <div class="warning-text">
 PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
