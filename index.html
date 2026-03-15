@@ -97,7 +97,8 @@ color:#2d7df6;
 
 button{
 margin-top:25px;
-width:230px;
+width:750px;
+max-width:50%; /* sayfa daralınca %90 kadar küçül */
 height:35px;
 padding:7px 20px 5px 10px;
 font-family:Helvetica;
@@ -154,12 +155,10 @@ background:white;
 padding:16px 25px;
 border-bottom:1px solid #ddd;
 height:40px;
-display:flex;
-justify-content:flex-end;
-align-items:center;
 }
 
 .modal-icons{
+float:right;
 display:flex;
 gap:24px;
 align-items:center;
@@ -182,72 +181,47 @@ background:white;
 box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
-/* PDF hazır ekranı */
-
 .pdf-warning{
 display:none;
 height:100%;
 width:100%;
 background:#e6e6e6;
+align-items:center;
+justify-content:center;
 flex-direction:column;
+text-align:center;
 }
 
-/* üst bar */
-
-.warning-header{
-background:white;
-border-bottom:1px solid #ddd;
+.warning-buttons{
+position:fixed;
+top:90px;
+right:40px;
 display:flex;
-justify-content:flex-end;
-padding:20px 40px;
 gap:20px;
+z-index:1000;
 }
 
-.warning-header button{
+.warning-buttons button{
 padding:12px 25px;
 font-size:22px;
 border:none;
 border-radius:10px;
 color:white;
 cursor:pointer;
+width:auto;
+height:auto;
+margin:0;
 }
 
 .g{background:#3aa189;}
 .b{background:#3a7fb0;}
 .r{background:#e74c3c;}
 
-/* ortadaki yazı */
-
 .warning-text{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
 font-size:55px;
 color:#333;
-text-align:center;
-padding:40px;
+max-width:900px;
 }
-
-/* alt bar */
-
-.warning-footer{
-background:white;
-border-top:1px solid #ddd;
-padding:15px 40px;
-display:flex;
-justify-content:flex-end;
-}
-
-.warning-footer button{
-background:none;
-border:none;
-color:#1976d2;
-font-size:16px;
-cursor:pointer;
-}
-
-/* küçük ekran */
 
 @media (max-width:1000px){
 
@@ -267,7 +241,7 @@ display:none;
 
 .modal-footer{
 position:relative;
-padding:10px 20px;
+padding:25px 20px;
 background:white;
 border-top:1px solid #ddd;
 }
@@ -317,7 +291,11 @@ cursor:pointer;
 <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
 4.23-1.57l.27.28v.79l5 
-4.99L20.49 19l-4.99-5z"/>
+4.99L20.49 19l-4.99-5zm-6 
+0C7.01 14 5 11.99 5 
+9.5S7.01 5 9.5 5 14 
+7.01 14 9.5 11.99 14 
+9.5 14z"/>
 </svg>
 
 Rapor Sorgula
@@ -347,7 +325,7 @@ Belsoft Bilgi Sistemleri © 2026
 
 <div class="pdf-warning">
 
-<div class="warning-header">
+<div class="warning-buttons">
 <button class="g" onclick="openDocument()">Görüntüle</button>
 <button class="b" onclick="downloadPDF()">İndir</button>
 <button class="r" onclick="closeModal()">Kapat</button>
@@ -355,10 +333,6 @@ Belsoft Bilgi Sistemleri © 2026
 
 <div class="warning-text">
 PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
-</div>
-
-<div class="warning-footer">
-<button onclick="closeModal()">KAPAT</button>
 </div>
 
 </div>
