@@ -43,7 +43,7 @@ padding:40px 20px;
 h1{
 font-size:20px;
 margin-bottom:5px;
-margin-top:25px; /* burayı ekledik, başlığı biraz aşağı kaydırır */
+margin-top:25px;
 }
 
 .sub{
@@ -99,7 +99,7 @@ color:#2d7df6;
 button{
 margin-top:25px;
 width:750px;
-max-width:50%; /* sayfa daralınca %90 kadar küçül */
+max-width:50%;
 height:35px;
 padding:7px 20px 5px 10px;
 font-family:Helvetica;
@@ -119,15 +119,14 @@ background:#e67e00;
 }
 
 .footer{
-  text-align:center;
-  padding:20px;
-  background:white;
-  border-top:1px solid #ccc;
-  font-size:14px;
-  color:#555;
-  box-shadow:0 4px 10px rgba(0,0,0,0.5);
+text-align:center;
+padding:20px;
+background:white;
+border-top:1px solid #ccc;
+font-size:14px;
+color:#555;
+box-shadow:0 4px 10px rgba(0,0,0,0.5);
 }
-
 
 .modal{
 display:none;
@@ -143,7 +142,7 @@ align-items:center;
 }
 
 .modal-content{
-background:#bfbfbf;
+background:white;
 width:90%;
 max-width:1200px;
 height:90%;
@@ -158,6 +157,7 @@ background:white;
 padding:16px 25px;
 border-bottom:1px solid #ddd;
 height:40px;
+position:relative;
 }
 
 .modal-icons{
@@ -168,7 +168,7 @@ align-items:center;
 }
 
 .modal-body{
-background:rgba(0,0,0,0.34);
+background:white;
 padding:30px 20px;
 flex:1;
 overflow:auto;
@@ -188,7 +188,7 @@ box-shadow:0 4px 15px rgba(0,0,0,0.25);
 display:none;
 height:100%;
 width:100%;
-background:#e6e6e6;
+background:white;
 align-items:center;
 justify-content:center;
 flex-direction:column;
@@ -196,23 +196,21 @@ text-align:center;
 }
 
 .warning-buttons{
-position:fixed;
-top:90px;
-right:40px;
+position:absolute;
+right:30px;
+top:50%;
+transform:translateY(-50%);
 display:flex;
-gap:20px;
-z-index:1000;
+gap:15px;
 }
 
 .warning-buttons button{
-padding:12px 25px;
-font-size:22px;
+padding:10px 20px;
+font-size:16px;
 border:none;
-border-radius:10px;
+border-radius:8px;
 color:white;
 cursor:pointer;
-width:auto;
-height:auto;
 margin:0;
 }
 
@@ -221,9 +219,9 @@ margin:0;
 .r{background:#e74c3c;}
 
 .warning-text{
-font-size:55px;
+font-size:42px;
 color:#333;
-max-width:900px;
+max-width:800px;
 }
 
 @media (max-width:1000px){
@@ -306,15 +304,19 @@ Rapor Sorgula
 
 </div>
 
-<div class="footer">
-
-</div>
+<div class="footer"></div>
 
 <div id="modal" class="modal">
 
 <div class="modal-content">
 
 <div class="modal-header">
+
+<div class="warning-buttons">
+<button class="g" onclick="openDocument()">Görüntüle</button>
+<button class="b" onclick="downloadPDF()">İndir</button>
+<button class="r" onclick="closeModal()">Kapat</button>
+</div>
 
 <div class="modal-icons">
 <img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
@@ -327,12 +329,6 @@ Rapor Sorgula
 <div class="modal-body">
 
 <div class="pdf-warning">
-
-<div class="warning-buttons">
-<button class="g" onclick="openDocument()">Görüntüle</button>
-<button class="b" onclick="downloadPDF()">İndir</button>
-<button class="r" onclick="closeModal()">Kapat</button>
-</div>
 
 <div class="warning-text">
 PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
