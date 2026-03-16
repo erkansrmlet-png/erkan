@@ -207,7 +207,7 @@ cursor:pointer;
 cursor:pointer;
 }
 
-/* TOAST */
+/* TOAST HATA MESAJI */
 
 .toast{
 position:fixed;
@@ -215,39 +215,24 @@ top:20px;
 right:20px;
 background:#1e1e1e;
 color:white;
-padding:14px 40px 18px 20px;
+padding:14px 20px;
 border-radius:8px;
 font-size:14px;
 display:none;
 box-shadow:0 5px 15px rgba(0,0,0,0.3);
-overflow:hidden;
-}
-
-.toast-close{
-position:absolute;
-top:6px;
-right:10px;
-cursor:pointer;
-font-size:18px;
-}
-
-.toast-progress{
-position:absolute;
-bottom:0;
-left:0;
-height:4px;
-width:100%;
-background:#e74c3c;
+border-left:5px solid #e74c3c;
+animation:slideIn .4s ease;
 }
 
 @keyframes slideIn{
-from{transform:translateX(120%);opacity:0;}
-to{transform:translateX(0);opacity:1;}
+from{
+transform:translateX(120%);
+opacity:0;
 }
-
-@keyframes slideOut{
-from{transform:translateX(0);opacity:1;}
-to{transform:translateX(120%);opacity:0;}
+to{
+transform:translateX(0);
+opacity:1;
+}
 }
 
 </style>
@@ -291,93 +276,81 @@ Rapor Sorgula
 
 </div>
 
-<div id="toast" class="toast" onmouseenter="pauseToast()" onmouseleave="resumeToast()">
+<div id="toast" class="toast">
 ❗ Yanlış T.C./Vergi No girdiniz.
-<span class="toast-close" onclick="closeToast()">×</span>
-<div id="toast-progress" class="toast-progress"></div>
+</div>
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<div class="modal-icons">
+<img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
+<img src="excel.png" width="38">
+<img src="close.png" width="34" class="icon" onclick="closeModal()">
+</div>
+
+</div>
+
+<div class="modal-body">
+<img src="evrak.jpg" class="evrak">
+</div>
+
+<div class="modal-footer">
+<button onclick="closeModal()">KAPAT</button>
+</div>
+
+</div>
+
 </div>
 
 <script>
 
-let toastTimer;
-let progressTimer;
-let total=6000;
-let remaining=total;
-let start;
-
 function raporSorgula(){
 
-let tc=document.getElementById("tcInput").value;
-let dogruTC="44986211745";
+var tc = document.getElementById("tcInput").value;
 
-if(tc===dogruTC){
-alert("Rapor açılacak");
+var dogruTC = "44986211745";
+
+if(tc === dogruTC){
+
+openModal();
+
 }else{
+
 showToast();
+
 }
 
 }
 
 function showToast(){
 
-let toast=document.getElementById("toast");
-let progress=document.getElementById("toast-progress");
+var toast = document.getElementById("toast");
 
 toast.style.display="block";
-toast.style.animation="slideIn .4s ease";
 
-remaining=total;
-start=Date.now();
-
-progress.style.width="100%";
-
-progressTimer=setInterval(updateProgress,10);
-toastTimer=setTimeout(closeToast,total);
-
-}
-
-function updateProgress(){
-
-let elapsed=Date.now()-start;
-let percent=((remaining-elapsed)/total)*100;
-
-if(percent<0) percent=0;
-
-document.getElementById("toast-progress").style.width=percent+"%";
-
-}
-
-function pauseToast(){
-
-clearTimeout(toastTimer);
-clearInterval(progressTimer);
-
-remaining-=Date.now()-start;
-
-}
-
-function resumeToast(){
-
-start=Date.now();
-
-toastTimer=setTimeout(closeToast,remaining);
-progressTimer=setInterval(updateProgress,10);
-
-}
-
-function closeToast(){
-
-let toast=document.getElementById("toast");
-
-toast.style.animation="slideOut .4s ease";
-
-setTimeout(()=>{
+setTimeout(function(){
 toast.style.display="none";
-},400);
+},3000);
 
-clearTimeout(toastTimer);
-clearInterval(progressTimer);
+}
 
+function openModal(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function downloadPDF(){
+var link=document.createElement("a");
+link.href="evrak.jpg";
+link.download="rapor.pdf";
+link.click();
 }
 
 </script>
