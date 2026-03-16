@@ -215,39 +215,24 @@ top:20px;
 right:20px;
 background:#1e1e1e;
 color:white;
-padding:14px 40px 18px 20px;
+padding:14px 20px;
 border-radius:8px;
 font-size:14px;
 display:none;
 box-shadow:0 5px 15px rgba(0,0,0,0.3);
-overflow:hidden;
-}
-
-.toast-close{
-position:absolute;
-top:6px;
-right:10px;
-cursor:pointer;
-font-size:18px;
-}
-
-.toast-progress{
-position:absolute;
-bottom:0;
-left:0;
-height:4px;
-width:100%;
-background:#e74c3c;
+border-left:5px solid #e74c3c;
+animation:slideIn .4s ease;
 }
 
 @keyframes slideIn{
-from{transform:translateX(120%);opacity:0;}
-to{transform:translateX(0);opacity:1;}
+from{
+transform:translateX(120%);
+opacity:0;
 }
-
-@keyframes slideOut{
-from{transform:translateX(0);opacity:1;}
-to{transform:translateX(120%);opacity:0;}
+to{
+transform:translateX(0);
+opacity:1;
+}
 }
 
 </style>
@@ -291,14 +276,8 @@ Rapor Sorgula
 
 </div>
 
-<div id="toast" class="toast" onmouseenter="pauseToast()" onmouseleave="resumeToast()">
-
+<div id="toast" class="toast">
 ❗ Yanlış T.C./Vergi No girdiniz.
-
-<span class="toast-close" onclick="closeToast()">×</span>
-
-<div id="toast-progress" class="toast-progress"></div>
-
 </div>
 
 <div id="modal" class="modal">
@@ -328,76 +307,50 @@ Rapor Sorgula
 </div>
 
 <script>
-let toastTimer;
-let progressInterval;
 
-let totalTime = 6000;
-let remainingTime = totalTime;
-let startTime;
+function raporSorgula(){
+
+var tc = document.getElementById("tcInput").value;
+
+var dogruTC = "44986211745";
+
+if(tc === dogruTC){
+
+openModal();
+
+}else{
+
+showToast();
+
+}
+
+}
 
 function showToast(){
 
-const toast=document.getElementById("toast");
-const progress=document.getElementById("toast-progress");
+var toast = document.getElementById("toast");
 
 toast.style.display="block";
-toast.style.animation="slideIn .4s ease";
 
-progress.style.width="100%";
-
-remainingTime = totalTime;
-startTime = Date.now();
-
-progressInterval=setInterval(updateProgress,10);
-
-toastTimer=setTimeout(closeToast,totalTime);
-
-}
-
-function updateProgress(){
-
-let elapsed = Date.now() - startTime;
-let percent = ((remainingTime - elapsed) / totalTime) * 100;
-
-if(percent < 0) percent = 0;
-
-document.getElementById("toast-progress").style.width = percent + "%";
-
-}
-
-function pauseToast(){
-
-clearTimeout(toastTimer);
-clearInterval(progressInterval);
-
-let elapsed = Date.now() - startTime;
-remainingTime = remainingTime - elapsed;
-
-}
-
-function resumeToast(){
-
-startTime = Date.now();
-
-toastTimer = setTimeout(closeToast, remainingTime);
-
-progressInterval = setInterval(updateProgress,10);
-
-}
-
-function closeToast(){
-
-const toast=document.getElementById("toast");
-
-toast.style.animation="slideOut .4s ease";
-
-setTimeout(()=>{
+setTimeout(function(){
 toast.style.display="none";
-},400);
+},3000);
 
-clearTimeout(toastTimer);
-clearInterval(progressInterval);
+}
 
+function openModal(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function downloadPDF(){
+var link=document.createElement("a");
+link.href="evrak.jpg";
+link.download="rapor.pdf";
+link.click();
 }
 
 </script>
