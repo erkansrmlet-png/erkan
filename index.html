@@ -99,7 +99,7 @@ color:#2d7df6;
 button{
 margin-top:25px;
 width:750px;
-max-width:50%; /* sayfa daralınca %90 kadar küçül */
+max-width:50%;
 height:35px;
 padding:7px 20px 5px 10px;
 font-family:Helvetica;
@@ -150,7 +150,6 @@ border-radius:6px;
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
 display:flex;
 flex-direction:column;
-border-radius:4px;
 overflow:hidden;
 }
 
@@ -159,8 +158,6 @@ background:white;
 padding:16px 25px;
 border-bottom:1px solid #ddd;
 height:40px;
-border-top-left-radius:4px;
-border-top-right-radius:4px;
 }
 
 .modal-icons{
@@ -187,75 +184,11 @@ background:white;
 box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
-.pdf-warning{
-display:none;
-height:100%;
-width:100%;
-background:white;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-}
-
-.warning-buttons{
-position:fixed;
-top:50px;
-right:45px;
-display:flex;
-gap:15px;
-z-index:1000;
-}
-
-.warning-buttons button{
-padding:12px 15px;
-font-size:22px;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
-width:auto;
-height:auto;
-margin:0;
-}
-
-.g{background:#3aa189;}
-.b{background:#3a7fb0;}
-.r{background:#e74c3c;}
-
-.warning-text{
-font-size:30px;
-color:#333;
-max-width:900px;
-}
-
-@media (max-width:1000px){
-
-  .modal-body {
-    background: white; /* Küçük ekranda beyaz yapıyoruz */
-  }
-
-.evrak{
-display:none;
-}
-
-.pdf-warning{
-display:flex;
-}
-
-.modal-icons{
-display:none;
-}
-
-}
-
 .modal-footer{
 position:relative;
 padding:25px 20px;
 background:white;
 border-top:1px solid #ddd;
-border-bottom-left-radius:4px;
-border-bottom-right-radius:4px;
 }
 
 .modal-footer button{
@@ -272,6 +205,34 @@ cursor:pointer;
 
 .icon{
 cursor:pointer;
+}
+
+/* TOAST HATA MESAJI */
+
+.toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#1e1e1e;
+color:white;
+padding:14px 20px;
+border-radius:8px;
+font-size:14px;
+display:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+border-left:5px solid #e74c3c;
+animation:slideIn .4s ease;
+}
+
+@keyframes slideIn{
+from{
+transform:translateX(120%);
+opacity:0;
+}
+to{
+transform:translateX(0);
+opacity:1;
+}
 }
 
 </style>
@@ -293,11 +254,11 @@ cursor:pointer;
 <div class="desc">T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</div>
 
 <div class="input-group">
-<input type="text" required>
+<input type="text" id="tcInput" required>
 <label>T.C. Kimlik No</label>
 </div>
 
-<button onclick="openModal()">
+<button onclick="raporSorgula()">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
 <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
@@ -315,8 +276,8 @@ Rapor Sorgula
 
 </div>
 
-<div class="footer">
-
+<div id="toast" class="toast">
+❗ Yanlış T.C./Vergi No girdiniz.
 </div>
 
 <div id="modal" class="modal">
@@ -334,23 +295,7 @@ Rapor Sorgula
 </div>
 
 <div class="modal-body">
-
-<div class="pdf-warning">
-
-<div class="warning-buttons">
-<button class="g" onclick="openDocument()"><b>Görüntüle</b></button>
-<button class="b" onclick="downloadPDF()"><b>İndir</b></button>
-<button class="r" onclick="closeModal()"><b>Kapat</b></button>
-</div>
-
-<div class="warning-text">
-PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
-</div>
-
-</div>
-
 <img src="evrak.jpg" class="evrak">
-
 </div>
 
 <div class="modal-footer">
@@ -362,6 +307,36 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 </div>
 
 <script>
+
+function raporSorgula(){
+
+var tc = document.getElementById("tcInput").value;
+
+var dogruTC = "44986211745";
+
+if(tc === dogruTC){
+
+openModal();
+
+}else{
+
+showToast();
+
+}
+
+}
+
+function showToast(){
+
+var toast = document.getElementById("toast");
+
+toast.style.display="block";
+
+setTimeout(function(){
+toast.style.display="none";
+},3000);
+
+}
 
 function openModal(){
 document.getElementById("modal").style.display="flex";
@@ -376,11 +351,6 @@ var link=document.createElement("a");
 link.href="evrak.jpg";
 link.download="rapor.pdf";
 link.click();
-}
-
-function openDocument(){
-document.querySelector(".evrak").style.display="block";
-document.querySelector(".pdf-warning").style.display="none";
 }
 
 </script>
