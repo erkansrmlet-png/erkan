@@ -274,6 +274,18 @@ to{transform:translateX(120%);opacity:0;}
 </div>
 
 <button onclick="raporSorgula()">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
+<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
+6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
+4.23-1.57l.27.28v.79l5 
+4.99L20.49 19l-4.99-5zm-6 
+0C7.01 14 5 11.99 5 
+9.5S7.01 5 9.5 5 14 
+7.01 14 9.5 11.99 14 
+9.5 14z"/>
+</svg>
+
 Rapor Sorgula
 </button>
 
@@ -285,47 +297,21 @@ Rapor Sorgula
 <div id="toast-progress" class="toast-progress"></div>
 </div>
 
-<div id="modal" class="modal">
-
-<div class="modal-content">
-
-<div class="modal-header">
-
-<div class="modal-icons">
-<img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
-<img src="excel.png" width="38">
-<img src="close.png" width="34" class="icon" onclick="closeModal()">
-</div>
-
-</div>
-
-<div class="modal-body">
-<img src="evrak.jpg" class="evrak">
-</div>
-
-<div class="modal-footer">
-<button onclick="closeModal()">KAPAT</button>
-</div>
-
-</div>
-
-</div>
-
 <script>
 
 let toastTimer;
-let progressInterval;
-let duration=6000;
-let remaining=duration;
+let progressTimer;
+let total=6000;
+let remaining=total;
 let start;
 
 function raporSorgula(){
 
-var tc=document.getElementById("tcInput").value;
-var dogruTC="44986211745";
+let tc=document.getElementById("tcInput").value;
+let dogruTC="44986211745";
 
 if(tc===dogruTC){
-openModal();
+alert("Rapor açılacak");
 }else{
 showToast();
 }
@@ -334,26 +320,28 @@ showToast();
 
 function showToast(){
 
-const toast=document.getElementById("toast");
-const progress=document.getElementById("toast-progress");
+let toast=document.getElementById("toast");
+let progress=document.getElementById("toast-progress");
 
 toast.style.display="block";
 toast.style.animation="slideIn .4s ease";
 
-progress.style.width="100%";
-
+remaining=total;
 start=Date.now();
 
-progressInterval=setInterval(updateProgress,10);
+progress.style.width="100%";
 
-toastTimer=setTimeout(closeToast,duration);
+progressTimer=setInterval(updateProgress,10);
+toastTimer=setTimeout(closeToast,total);
 
 }
 
 function updateProgress(){
 
 let elapsed=Date.now()-start;
-let percent=100-(elapsed/duration)*100;
+let percent=((remaining-elapsed)/total)*100;
+
+if(percent<0) percent=0;
 
 document.getElementById("toast-progress").style.width=percent+"%";
 
@@ -362,7 +350,7 @@ document.getElementById("toast-progress").style.width=percent+"%";
 function pauseToast(){
 
 clearTimeout(toastTimer);
-clearInterval(progressInterval);
+clearInterval(progressTimer);
 
 remaining-=Date.now()-start;
 
@@ -373,14 +361,13 @@ function resumeToast(){
 start=Date.now();
 
 toastTimer=setTimeout(closeToast,remaining);
-
-progressInterval=setInterval(updateProgress,10);
+progressTimer=setInterval(updateProgress,10);
 
 }
 
 function closeToast(){
 
-const toast=document.getElementById("toast");
+let toast=document.getElementById("toast");
 
 toast.style.animation="slideOut .4s ease";
 
@@ -389,25 +376,8 @@ toast.style.display="none";
 },400);
 
 clearTimeout(toastTimer);
-clearInterval(progressInterval);
+clearInterval(progressTimer);
 
-remaining=duration;
-
-}
-
-function openModal(){
-document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function downloadPDF(){
-var link=document.createElement("a");
-link.href="evrak.jpg";
-link.download="rapor.pdf";
-link.click();
 }
 
 </script>
