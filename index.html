@@ -7,216 +7,218 @@
 <style>
 
 body{
-margin:0;
-font-family:Helvetica, Arial, sans-serif;
-background:white;
-display:flex;
-flex-direction:column;
-min-height:100vh;
-overflow:hidden;
+  margin:0;
+  font-family:Helvetica, Arial, sans-serif;
+  background:white;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  overflow:hidden;
 }
 
 .header{
-padding:2px 32px 10px 32px;
+  padding:2px 32px 10px 32px;
 }
 
 .title{
-font-size:16.23px;
-margin-top:32.8px;
+  font-size:16.23px;
+  margin-top:32.8px;
 }
 
 .bluebar{
-height:2px;
-background:#2d7df6;
-margin-top:3.2px;
+  height:2px;
+  background:#2d7df6;
+  margin-top:3.2px;
 }
 
+/* ===== Güncellenmiş container ===== */
 .container{
-flex:1;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px 20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;       /* yatayda ortala */
+  justify-content:center;   /* dikeyde ortala */
+  text-align:center;
+  padding:20px;
+  gap:15px;                 /* elemanlar arası boşluk */
 }
 
 h1{
-font-size:20px;
-margin-bottom:5px;
+  font-size:20px;
+  margin:0;
 }
 
 .sub{
-font-size:16px;
-font-weight:normal;
-margin-top:7px;
+  font-size:16px;
+  margin:0;
 }
 
 .desc{
-color:black;
-font-size:12px;
-margin-top:6px;
+  color:black;
+  font-size:12px;
+  margin:0;
 }
 
 .input-group{
-margin-top:25px;
-width:230px;
-position:relative;
+  margin-top:25px;
+  width:230px;
+  position:relative;
 }
 
 .input-group input{
-width:100%;
-padding:10px;
-font-size:15px;
-border-radius:4px;
-border:1px solid #ccc;
-outline:none;
+  width:100%;
+  padding:10px;
+  font-size:15px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  outline:none;
 }
 
 .input-group input:focus{
-border-color:#2d7df6;
+  border-color:#2d7df6;
 }
 
 .input-group label{
-position:absolute;
-left:10px;
-top:11px;
-color:#dddddd;
-font-size:14px;
-background:white;
-padding:0 4px;
-transition:0.2s;
-pointer-events:none;
+  position:absolute;
+  left:10px;
+  top:11px;
+  color:#dddddd;
+  font-size:14px;
+  background:white;
+  padding:0 4px;
+  transition:0.2s;
+  pointer-events:none;
 }
 
 .input-group input:focus + label,
 .input-group input:valid + label{
-top:-8px;
-font-size:12px;
-color:#2d7df6;
+  top:-8px;
+  font-size:12px;
+  color:#2d7df6;
 }
 
+/* ===== Güncellenmiş buton ===== */
 button{
-margin-top:25px;
-width:750px;
-max-width:50%; /* sayfa daralınca %90 kadar küçül */
-height:35px;
-padding:7px 20px 5px 10px;
-font-family:Helvetica;
-font-size:14.7px;
-background:linear-gradient(to bottom,#ffa726,#fb8c00);
-color:white;
-border:none;
-border-radius:4px;
-cursor:pointer;
-transition:all .2s ease;
+  margin-top:0;             /* gap ile boşluk yönetilecek */
+  width:100%;
+  max-width:750px;           /* büyük ekranlarda max genişlik */
+  height:35px;
+  padding:7px 20px;
+  font-family:Helvetica;
+  font-size:14.7px;
+  background:linear-gradient(to bottom,#ffa726,#fb8c00);
+  color:white;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all .2s ease;
 }
 
 button:hover{
-transform:translateY(-1px);
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
-background:#e67e00;
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.2);
+  background:#e67e00;
 }
 
 .footer{
-text-align:center;
-padding:14px;
-background:#f3f3f3;
-border-top:1px solid #cfcfcf;
-font-size:14px;
-color:#555;
-box-shadow:0 5px 8px rgba(0,0,0,0.40);
+  text-align:center;
+  padding:14px;
+  background:#f3f3f3;
+  border-top:1px solid #cfcfcf;
+  font-size:14px;
+  color:#555;
+  box-shadow:0 5px 8px rgba(0,0,0,0.40);
 }
 
 .modal{
-display:none;
-position:fixed;
-z-index:999;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
+  display:none;
+  position:fixed;
+  z-index:999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
 }
 
 .modal-content{
-background:#bfbfbf;
-width:90%;
-max-width:1200px;
-height:90%;
-border-radius:6px;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-display:flex;
-flex-direction:column;
-border-radius:4px;
-overflow:hidden;
+  background:#bfbfbf;
+  width:90%;
+  max-width:1200px;
+  height:90%;
+  border-radius:6px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  display:flex;
+  flex-direction:column;
+  border-radius:4px;
+  overflow:hidden;
 }
 
 .modal-header{
-background:white;
-padding:16px 25px;
-border-bottom:1px solid #ddd;
-height:40px;
-border-top-left-radius:4px;
-border-top-right-radius:4px;
+  background:white;
+  padding:16px 25px;
+  border-bottom:1px solid #ddd;
+  height:40px;
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
 }
 
 .modal-icons{
-float:right;
-display:flex;
-gap:10px;
-align-items:center;
+  float:right;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
 .modal-body{
-background:rgba(0,0,0,0.34);
-padding:30px 20px;
-flex:1;
-overflow:auto;
-text-align:center;
-position:relative;
+  background:rgba(0,0,0,0.34);
+  padding:30px 20px;
+  flex:1;
+  overflow:auto;
+  text-align:center;
+  position:relative;
 }
 
 .evrak{
-max-width:1000px;
-width:100%;
-height:auto;
-background:white;
-box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  max-width:1000px;
+  width:100%;
+  height:auto;
+  background:white;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
 .pdf-warning{
-display:none;
-height:100%;
-width:100%;
-background:white;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
+  display:none;
+  height:100%;
+  width:100%;
+  background:white;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
 }
 
 .warning-buttons{
-position:fixed;
-top:50px;
-right:45px;
-display:flex;
-gap:15px;
-z-index:1000;
+  position:fixed;
+  top:50px;
+  right:45px;
+  display:flex;
+  gap:15px;
+  z-index:1000;
 }
 
 .warning-buttons button{
-padding:12px 15px;
-font-size:22px;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
-width:auto;
-height:auto;
-margin:0;
+  padding:12px 15px;
+  font-size:22px;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  width:auto;
+  height:auto;
+  margin:0;
 }
 
 .g{background:#3aa189;}
@@ -224,54 +226,80 @@ margin:0;
 .r{background:#e74c3c;}
 
 .warning-text{
-font-size:30px;
-color:#333;
-max-width:900px;
+  font-size:30px;
+  color:#333;
+  max-width:900px;
 }
 
+/* ===== Modal responsive ===== */
 @media (max-width:1000px){
 
   .modal-body {
     background: white; /* Küçük ekranda beyaz yapıyoruz */
   }
 
-.evrak{
-display:none;
+  .evrak{
+    display:none;
+  }
+
+  .pdf-warning{
+    display:flex;
+  }
+
+  .modal-icons{
+    display:none;
+  }
+
 }
 
-.pdf-warning{
-display:flex;
-}
+/* ===== Container responsive ===== */
+@media (max-width:600px){
+  .container{
+    gap:8px; /* elemanlar birbirine yaklaşsın */
+    padding:15px;
+  }
 
-.modal-icons{
-display:none;
-}
+  h1{
+    font-size:18px;
+  }
 
+  .sub{
+    font-size:14px;
+  }
+
+  .desc{
+    font-size:11px;
+  }
+
+  button{
+    font-size:13px;
+    height:32px;
+  }
 }
 
 .modal-footer{
-position:relative;
-padding:25px 20px;
-background:white;
-border-top:1px solid #ddd;
-border-bottom-left-radius:4px;
-border-bottom-right-radius:4px;
+  position:relative;
+  padding:25px 20px;
+  background:white;
+  border-top:1px solid #ddd;
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius:4px;
 }
 
 .modal-footer button{
-position:absolute;
-left:97%;
-top:-20px;
-transform:translate(-50%,0);
-background:none;
-border:none;
-color:#1976d2;
-font-size:14px;
-cursor:pointer;
+  position:absolute;
+  left:97%;
+  top:-20px;
+  transform:translate(-50%,0);
+  background:none;
+  border:none;
+  color:#1976d2;
+  font-size:14px;
+  cursor:pointer;
 }
 
 .icon{
-cursor:pointer;
+  cursor:pointer;
 }
 
 </style>
@@ -280,8 +308,8 @@ cursor:pointer;
 <body>
 
 <div class="header">
-<div class="title">Qr Code Rapor Sorgulama</div>
-<div class="bluebar"></div>
+  <div class="title">Qr Code Rapor Sorgulama</div>
+  <div class="bluebar"></div>
 </div>
 
 <div class="container">
@@ -364,23 +392,23 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 <script>
 
 function openModal(){
-document.getElementById("modal").style.display="flex";
+  document.getElementById("modal").style.display="flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+  document.getElementById("modal").style.display="none";
 }
 
 function downloadPDF(){
-var link=document.createElement("a");
-link.href="evrak.jpg";
-link.download="rapor.pdf";
-link.click();
+  var link=document.createElement("a");
+  link.href="evrak.jpg";
+  link.download="rapor.pdf";
+  link.click();
 }
 
 function openDocument(){
-document.querySelector(".evrak").style.display="block";
-document.querySelector(".pdf-warning").style.display="none";
+  document.querySelector(".evrak").style.display="block";
+  document.querySelector(".pdf-warning").style.display="none";
 }
 
 </script>
