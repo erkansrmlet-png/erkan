@@ -215,13 +215,20 @@ top:20px;
 right:20px;
 background:#1e1e1e;
 color:white;
-padding:14px 20px 18px 20px;
+padding:14px 40px 18px 20px;
 border-radius:8px;
 font-size:14px;
 display:none;
 box-shadow:0 5px 15px rgba(0,0,0,0.3);
 overflow:hidden;
-animation:slideIn .4s ease;
+}
+
+.toast-close{
+position:absolute;
+top:6px;
+right:10px;
+cursor:pointer;
+font-size:18px;
 }
 
 .toast-progress{
@@ -231,23 +238,16 @@ left:0;
 height:4px;
 width:100%;
 background:#e74c3c;
-animation:progress 6s linear forwards;
-}
-
-@keyframes progress{
-from{width:100%;}
-to{width:0%;}
 }
 
 @keyframes slideIn{
-from{
-transform:translateX(120%);
-opacity:0;
+from{transform:translateX(120%);opacity:0;}
+to{transform:translateX(0);opacity:1;}
 }
-to{
-transform:translateX(0);
-opacity:1;
-}
+
+@keyframes slideOut{
+from{transform:translateX(0);opacity:1;}
+to{transform:translateX(120%);opacity:0;}
 }
 
 </style>
@@ -274,26 +274,15 @@ opacity:1;
 </div>
 
 <button onclick="raporSorgula()">
-
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
-<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
-6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
-4.23-1.57l.27.28v.79l5 
-4.99L20.49 19l-4.99-5zm-6 
-0C7.01 14 5 11.99 5 
-9.5S7.01 5 9.5 5 14 
-7.01 14 9.5 11.99 14 
-9.5 14z"/>
-</svg>
-
 Rapor Sorgula
 </button>
 
 </div>
 
-<div id="toast" class="toast">
+<div id="toast" class="toast" onmouseenter="pauseToast()" onmouseleave="resumeToast()">
 ❗ Yanlış T.C./Vergi No girdiniz.
-<div class="toast-progress"></div>
+<span class="toast-close" onclick="closeToast()">×</span>
+<div id="toast-progress" class="toast-progress"></div>
 </div>
 
 <div id="modal" class="modal">
@@ -324,35 +313,85 @@ Rapor Sorgula
 
 <script>
 
+let toastTimer;
+let progressInterval;
+let duration=6000;
+let remaining=duration;
+let start;
+
 function raporSorgula(){
 
-var tc = document.getElementById("tcInput").value;
+var tc=document.getElementById("tcInput").value;
+var dogruTC="44986211745";
 
-var dogruTC = "44986211745";
-
-if(tc === dogruTC){
-
+if(tc===dogruTC){
 openModal();
-
 }else{
-
 showToast();
-
 }
 
 }
 
 function showToast(){
 
-var toast=document.getElementById("toast");
+const toast=document.getElementById("toast");
+const progress=document.getElementById("toast-progress");
 
 toast.style.display="block";
+toast.style.animation="slideIn .4s ease";
 
-setTimeout(function(){
+progress.style.width="100%";
 
+start=Date.now();
+
+progressInterval=setInterval(updateProgress,10);
+
+toastTimer=setTimeout(closeToast,duration);
+
+}
+
+function updateProgress(){
+
+let elapsed=Date.now()-start;
+let percent=100-(elapsed/duration)*100;
+
+document.getElementById("toast-progress").style.width=percent+"%";
+
+}
+
+function pauseToast(){
+
+clearTimeout(toastTimer);
+clearInterval(progressInterval);
+
+remaining-=Date.now()-start;
+
+}
+
+function resumeToast(){
+
+start=Date.now();
+
+toastTimer=setTimeout(closeToast,remaining);
+
+progressInterval=setInterval(updateProgress,10);
+
+}
+
+function closeToast(){
+
+const toast=document.getElementById("toast");
+
+toast.style.animation="slideOut .4s ease";
+
+setTimeout(()=>{
 toast.style.display="none";
+},400);
 
-},6000);
+clearTimeout(toastTimer);
+clearInterval(progressInterval);
+
+remaining=duration;
 
 }
 
