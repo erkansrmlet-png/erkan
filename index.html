@@ -184,6 +184,66 @@ background:white;
 box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
+.pdf-warning{
+display:none; 
+height:100%; 
+width:100%; 
+background:white; 
+align-items:center; 
+justify-content:center; 
+flex-direction:column; 
+text-align:center; 
+} 
+  
+.warning-buttons{ 
+position:fixed; 
+top:50px; 
+right:45px; 
+display:flex; 
+gap:15px; 
+z-index:1000; 
+} 
+  
+.warning-buttons button{ 
+padding:12px 15px; 
+font-size:22px; 
+border:none; 
+border-radius:10px; 
+color:white; 
+cursor:pointer; 
+width:auto; 
+height:auto; 
+margin:0; 
+} 
+  
+.g{background:#3aa189;} 
+.b{background:#3a7fb0;} 
+.r{background:#e74c3c;} 
+  
+.warning-text{ 
+font-size:30px; 
+color:#333; 
+max-width:900px; 
+} 
+  
+@media (max-width:1000px){ 
+  
+.modal-body { 
+background: white; /* Küçük ekranda beyaz yapıyoruz */ } 
+  
+.evrak{ 
+display:none; 
+} 
+  
+.pdf-warning{ 
+display:flex; 
+} 
+  
+.modal-icons{ 
+display:none; 
+} 
+}
+
 .modal-footer{
 position:relative;
 padding:25px 20px;
@@ -268,7 +328,7 @@ animation-play-state:paused;
 <label>T.C. Kimlik No</label>
 </div>
 
-<button onclick="raporSorgula()">
+<button onclick="openModal()">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
 <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
@@ -305,6 +365,20 @@ Rapor Sorgula
 </div>
 
 <div class="modal-body">
+<div class="pdf-warning">
+<div class="warning-buttons"> 
+<button class="g" onclick="openDocument()">
+<b>Görüntüle</b></button> 
+<button class="b" onclick="downloadPDF()">
+<b>İndir</b></button> 
+<button class="r" onclick="closeModal()">
+<b>Kapat</b></button> </div> 
+  
+<div class="warning-text"> 
+PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz. 
+</div>
+
+</div>
 <img src="evrak.jpg" class="evrak">
 </div>
 
@@ -318,6 +392,24 @@ Rapor Sorgula
 
 <script>
 
+function openModal(){
+  document.getElementById("modal").style.display="flex"; 
+} 
+  
+function closeModal(){ 
+document.getElementById("modal").style.display="none"; 
+} 
+  
+function downloadPDF(){ 
+var link=document.createElement("a"); 
+link.href="evrak.jpg"; 
+link.download="rapor.pdf"; 
+link.click(); } 
+  
+function openDocument(){ 
+document.querySelector(".evrak").style.display="block"; 
+document.querySelector(".pdf-warning").style.display="none"; }
+  
 var toastTimeout;
 var remainingTime = 6000;
 var startTime;
