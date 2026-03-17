@@ -328,7 +328,7 @@ animation-play-state:paused;
 <label>T.C. Kimlik No</label>
 </div>
 
-<button onclick="openModal()">
+<button onclick="raporSorgula()">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
 <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
@@ -391,20 +391,6 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 </div>
 
 <script>
-
-function openModal(){
-  document.getElementById("modal").style.display="flex"; 
-} 
-  
-function closeModal(){ 
-document.getElementById("modal").style.display="none"; 
-} 
-  
-function downloadPDF(){ 
-var link=document.createElement("a"); 
-link.href="evrak.jpg"; 
-link.download="rapor.pdf"; 
-link.click(); } 
   
 function openDocument(){ 
 document.querySelector(".evrak").style.display="block"; 
