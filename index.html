@@ -2,8 +2,6 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Qr Code Rapor Sorgulama</title>
 
 <style>
@@ -33,17 +31,13 @@ background:#2d7df6;
 margin-top:3.2px;
 }
 
-.container{ 
-flex:1; 
+.container{ flex:1; 
 display:flex; 
 flex-direction:column; 
 align-items:center; 
 justify-content:center; 
 text-align:center; 
 padding:40px 20px; 
-width:100%;
-max-width:600px;
-margin:auto;
 }
 
 h1{
@@ -53,18 +47,19 @@ margin-bottom:5px;
 
 .sub{
 font-size:16px;
+font-weight:normal;
 margin-top:7px;
 }
 
 .desc{
+color:black;
 font-size:12px;
 margin-top:6px;
 }
 
 .input-group{
 margin-top:25px;
-width:100%;
-max-width:260px;
+width:230px;
 position:relative;
 }
 
@@ -85,7 +80,7 @@ border-color:#2d7df6;
 position:absolute;
 left:10px;
 top:11px;
-color:#ddd;
+color:#dddddd;
 font-size:14px;
 background:white;
 padding:0 4px;
@@ -102,15 +97,24 @@ color:#2d7df6;
 
 button{
 margin-top:25px;
-width:100%;
-max-width:300px;
-height:40px;
-font-size:15px;
+width:750px; /* input ile aynı yap */
+max-width:50%;
+height:35px;
+padding:7px 20px 5px 10px;
+font-family:Helvetica;
+font-size:14.7px;
 background:linear-gradient(to bottom,#ffa726,#fb8c00);
 color:white;
 border:none;
 border-radius:4px;
 cursor:pointer;
+transition:all .2s ease;
+}
+
+button:hover{
+transform:translateY(-1px);
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+background:#e67e00;
 }
 
 .footer{
@@ -119,6 +123,8 @@ padding:14px;
 background:#f3f3f3;
 border-top:1px solid #cfcfcf;
 font-size:14px;
+color:#555;
+box-shadow:0 5px 8px rgba(0,0,0,0.40);
 }
 
 .modal{
@@ -140,6 +146,7 @@ width:90%;
 max-width:1200px;
 height:90%;
 border-radius:6px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
 display:flex;
 flex-direction:column;
 overflow:hidden;
@@ -149,12 +156,14 @@ overflow:hidden;
 background:white;
 padding:16px 25px;
 border-bottom:1px solid #ddd;
+height:40px;
 }
 
 .modal-icons{
 float:right;
 display:flex;
 gap:10px;
+align-items:center;
 }
 
 .modal-body{
@@ -163,12 +172,15 @@ padding:30px 20px;
 flex:1;
 overflow:auto;
 text-align:center;
+position:relative;
 }
 
 .evrak{
 max-width:1000px;
 width:100%;
+height:auto;
 background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
 .pdf-warning{
@@ -188,15 +200,19 @@ top:50px;
 right:45px; 
 display:flex; 
 gap:15px; 
+z-index:1000; 
 } 
   
 .warning-buttons button{ 
 padding:12px 15px; 
-font-size:18px; 
+font-size:22px; 
 border:none; 
 border-radius:10px; 
 color:white; 
 cursor:pointer; 
+width:auto; 
+height:auto; 
+margin:0; 
 } 
   
 .g{background:#3aa189;} 
@@ -204,27 +220,88 @@ cursor:pointer;
 .r{background:#e74c3c;} 
   
 .warning-text{ 
-font-size:20px; 
-max-width:300px; 
+font-size:30px; 
+color:#333; 
+max-width:900px; 
 } 
   
 @media (max-width:1000px){ 
   
 .modal-body { 
-background: white;
-} 
+background: white; /* Küçük ekranda beyaz yapıyoruz */ } 
   
 .evrak{ 
-display:none;
+display:none; 
 } 
   
 .pdf-warning{ 
-display:flex;
+display:flex; 
 } 
   
 .modal-icons{ 
-display:none;
+display:none; 
 } 
+}
+
+.modal-footer{
+position:relative;
+padding:25px 20px;
+background:white;
+border-top:1px solid #ddd;
+}
+
+.modal-footer button{
+position:absolute;
+left:97%;
+top:-20px;
+transform:translate(-50%,0);
+background:none;
+border:none;
+color:#1976d2;
+font-size:14px;
+cursor:pointer;
+}
+
+.icon{
+cursor:pointer;
+}
+
+/* TOAST HATA MESAJI */
+
+.toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#1e1e1e;
+color:white;
+padding:14px 20px 22px 20px;
+border-radius:8px;
+font-size:14px;
+display:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+/* ALTTAKİ SÜRE BAR */
+.toast::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+height:4px;
+width:100%;
+background:#e74c3c;
+animation:progress 6s linear forwards;
+}
+
+@keyframes progress{
+from{ width:100%; }
+to{ width:0%; }
+}
+
+/* HOVER'DA DURDUR */
+.toast.pause::after{
+animation-play-state:paused;
 }
 
 </style>
@@ -250,7 +327,21 @@ display:none;
 <label>T.C. Kimlik No</label>
 </div>
 
-<button onclick="raporSorgula()">Rapor Sorgula</button>
+<button onclick="raporSorgula()">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
+<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
+6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
+4.23-1.57l.27.28v.79l5 
+4.99L20.49 19l-4.99-5zm-6 
+0C7.01 14 5 11.99 5 
+9.5S7.01 5 9.5 5 14 
+7.01 14 9.5 11.99 14 
+9.5 14z"/>
+</svg>
+
+Rapor Sorgula
+</button>
 
 </div>
 
@@ -263,28 +354,35 @@ display:none;
 <div class="modal-content">
 
 <div class="modal-header">
+
 <div class="modal-icons">
-<img src="pdf.png" width="30" onclick="downloadPDF()">
-<img src="close.png" width="30" onclick="closeModal()">
+<img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
+<img src="excel.png" width="38">
+<img src="close.png" width="34" class="icon" onclick="closeModal()">
 </div>
+
 </div>
 
 <div class="modal-body">
-
 <div class="pdf-warning">
 <div class="warning-buttons"> 
-<button class="g" onclick="openDocument()">Görüntüle</button> 
-<button class="b" onclick="downloadPDF()">İndir</button> 
-<button class="r" onclick="closeModal()">Kapat</button> 
-</div> 
+<button class="g" onclick="openDocument()">
+<b>Görüntüle</b></button> 
+<button class="b" onclick="downloadPDF()">
+<b>İndir</b></button> 
+<button class="r" onclick="closeModal()">
+<b>Kapat</b></button> </div> 
   
 <div class="warning-text"> 
-PDF hazır. Yukarıdan görüntüleyebilirsiniz. 
-</div>
+PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz. 
 </div>
 
+</div>
 <img src="evrak.jpg" class="evrak">
+</div>
 
+<div class="modal-footer">
+<button onclick="closeModal()">KAPAT</button>
 </div>
 
 </div>
@@ -292,36 +390,81 @@ PDF hazır. Yukarıdan görüntüleyebilirsiniz.
 </div>
 
 <script>
-
+  
 function openDocument(){ 
 document.querySelector(".evrak").style.display="block"; 
-document.querySelector(".pdf-warning").style.display="none"; 
-}
+document.querySelector(".pdf-warning").style.display="none"; }
+  
+var toastTimeout;
+var remainingTime = 6000;
+var startTime;
 
 function raporSorgula(){
 
 var tc = document.getElementById("tcInput").value;
 
-if(tc === "44986211745"){
+var dogruTC = "44986211745";
+
+if(tc === dogruTC){
+
 openModal();
+
 }else{
-alert("Yanlış TC");
+
+showToast();
+
 }
+
+}
+
+function showToast(){
+
+var toast = document.getElementById("toast");
+
+toast.style.display="block";
+toast.classList.remove("pause");
+
+/* animasyonu resetle */
+toast.style.animation = "none";
+toast.offsetHeight;
+toast.style.animation = null;
+
+startTime = Date.now();
+
+toastTimeout = setTimeout(hideToast, remainingTime);
+
+toast.onmouseenter = function(){
+
+toast.classList.add("pause");
+clearTimeout(toastTimeout);
+
+remainingTime -= Date.now() - startTime;
+
+};
+
+toast.onmouseleave = function(){
+
+toast.classList.remove("pause");
+
+startTime = Date.now();
+
+toastTimeout = setTimeout(hideToast, remainingTime);
+
+};
+
+}
+
+function hideToast(){
+
+var toast = document.getElementById("toast");
+
+toast.style.display="none";
+remainingTime = 6000;
 
 }
 
 function openModal(){ 
-document.getElementById("modal").style.display="flex";
-
-if(window.innerWidth <= 1000){
-document.querySelector(".evrak").style.display="none";
-document.querySelector(".pdf-warning").style.display="flex";
-}else{
-document.querySelector(".evrak").style.display="block";
-document.querySelector(".pdf-warning").style.display="none";
-}
-
-}
+document.getElementById("modal").style.display="flex"; }
 
 function closeModal(){
 document.getElementById("modal").style.display="none";
