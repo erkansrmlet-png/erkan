@@ -39,6 +39,7 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:40px 20px;
+width:100%;
 }
 
 h1{
@@ -98,9 +99,9 @@ color:#2d7df6;
 
 button{
 margin-top:25px;
-width:750px;
-max-width:50%;
-height:35px;
+width:230px; /* input ile aynı yap */
+max-width:90%;
+height:40px;
 padding:7px 20px 5px 10px;
 font-family:Helvetica;
 font-size:14.7px;
@@ -242,6 +243,37 @@ display:flex;
 .modal-icons{ 
 display:none; 
 } 
+}
+
+@media (max-width:600px){
+
+.container{
+justify-content:flex-start;
+padding-top:80px;
+}
+
+h1{
+font-size:18px;
+}
+
+.sub{
+font-size:14px;
+}
+
+.desc{
+font-size:11px;
+}
+
+.input-group{
+width:100%;
+max-width:280px;
+}
+
+button{
+width:100%;
+max-width:280px;
+}
+
 }
 
 .modal-footer{
@@ -465,7 +497,19 @@ remainingTime = 6000;
 }
 
 function openModal(){
+
 document.getElementById("modal").style.display="flex";
+
+/* HER AÇILIŞTA RESET */
+document.querySelector(".evrak").style.display="block";
+document.querySelector(".pdf-warning").style.display="none";
+
+/* Mobil kontrol */
+if(window.innerWidth <= 1000){
+document.querySelector(".evrak").style.display="none";
+document.querySelector(".pdf-warning").style.display="flex";
+}
+
 }
 
 function closeModal(){
