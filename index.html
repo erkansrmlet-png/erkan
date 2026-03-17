@@ -215,24 +215,34 @@ top:20px;
 right:20px;
 background:#1e1e1e;
 color:white;
-padding:14px 20px;
+padding:14px 20px 22px 20px;
 border-radius:8px;
 font-size:14px;
 display:none;
 box-shadow:0 5px 15px rgba(0,0,0,0.3);
-border-left:5px solid #e74c3c;
-animation:slideIn .4s ease;
+overflow:hidden;
 }
 
-@keyframes slideIn{
-from{
-transform:translateX(120%);
-opacity:0;
+/* ALTTAKİ SÜRE BAR */
+.toast::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+height:4px;
+width:100%;
+background:#e74c3c;
+animation:progress 6s linear forwards;
 }
-to{
-transform:translateX(0);
-opacity:1;
+
+@keyframes progress{
+from{ width:100%; }
+to{ width:0%; }
 }
+
+/* HOVER'DA DURDUR */
+.toast.pause::after{
+animation-play-state:paused;
 }
 
 </style>
@@ -308,6 +318,12 @@ Rapor Sorgula
 
 <script>
 
+<script>
+
+var toastTimeout;
+var remainingTime = 6000;
+var startTime;
+
 function raporSorgula(){
 
 var tc = document.getElementById("tcInput").value;
@@ -331,10 +347,44 @@ function showToast(){
 var toast = document.getElementById("toast");
 
 toast.style.display="block";
+toast.classList.remove("pause");
 
-setTimeout(function(){
+/* animasyonu resetle */
+toast.style.animation = "none";
+toast.offsetHeight;
+toast.style.animation = null;
+
+startTime = Date.now();
+
+toastTimeout = setTimeout(hideToast, remainingTime);
+
+toast.onmouseenter = function(){
+
+toast.classList.add("pause");
+clearTimeout(toastTimeout);
+
+remainingTime -= Date.now() - startTime;
+
+};
+
+toast.onmouseleave = function(){
+
+toast.classList.remove("pause");
+
+startTime = Date.now();
+
+toastTimeout = setTimeout(hideToast, remainingTime);
+
+};
+
+}
+
+function hideToast(){
+
+var toast = document.getElementById("toast");
+
 toast.style.display="none";
-},3000);
+remainingTime = 6000;
 
 }
 
@@ -353,6 +403,7 @@ link.download="evrak.pdf";
 link.click();
 }
 
+</script>
 </script>
 
 </body>
