@@ -473,20 +473,22 @@ function openDocument(){
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
 
-    // Modal-body'yi temizle ve koyuluk/padding kaldır
+    // Modal-body'yi temizle
     var modalBody = document.querySelector(".modal-body");
     modalBody.style.background = "transparent";
     modalBody.style.padding = "0";
+    modalBody.style.display = "flex";
     modalBody.style.justifyContent = "center";
     modalBody.style.alignItems = "center";
-    modalBody.style.display = "flex";
 
-    // Evrakı tam ekran yap
+    // Evrağı ekranı dolduracak şekilde ayarla
     var evrak = document.querySelector(".evrak");
     evrak.style.display = "block";
-    evrak.style.width = "100%";
-    evrak.style.height = "100%";
-    evrak.style.objectFit = "contain"; // tam sığdırır, oran bozulmaz
+    evrak.style.maxWidth = "100%";
+    evrak.style.maxHeight = "100%";
+    evrak.style.width = "auto";
+    evrak.style.height = "auto";
+    evrak.style.objectFit = "contain"; // Oranı bozulmasın
 }
   
 var toastTimeout;
