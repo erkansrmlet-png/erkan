@@ -461,62 +461,11 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 <script>
 
 function excelHata(){
-
-  var yeniSekme = window.open("", "_blank");
-
-  yeniSekme.document.write(`
-    <html>
-    <head>
-      <title>Hata</title>
-      <style>
-        body{
-          font-family:Arial;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          height:100vh;
-          margin:0;
-          background:#f5f5f5;
-        }
-        .box{
-          background:white;
-          padding:30px 40px;
-          border-radius:10px;
-          box-shadow:0 5px 20px rgba(0,0,0,0.2);
-          text-align:center;
-          font-size:18px;
-        }
-        .bar{
-          margin-top:15px;
-          height:5px;
-          background:#e74c3c;
-          animation:progress 5s linear forwards;
-        }
-        @keyframes progress{
-          from{width:100%;}
-          to{width:0%;}
-        }
-      </style>
-    </head>
-    <body>
-
-      <div class="box">
-        ❗ Excel dosyası mevcut değil.
-        <div class="bar"></div>
-      </div>
-
-      <script>
-        setTimeout(() => {
-          window.close();
-        }, 5000);
-      <\/script>
-
-    </body>
-    </html>
-  `);
-
+  var toast = document.getElementById("toast");
+  toast.innerHTML = "❗ Hata: error_not_found: error_not_found";
+  showToast();
 }
-  
+
 function openDocument(){ 
 document.querySelector(".evrak").style.display="block"; 
 document.querySelector(".pdf-warning").style.display="none"; }
