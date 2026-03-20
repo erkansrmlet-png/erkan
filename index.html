@@ -466,10 +466,16 @@ function excelHata(){
   toast.innerHTML = "❗ Hata: error_not_found: error_not_found";
   showToast();
 }
-
 function openDocument(){ 
-document.querySelector(".evrak").style.display="block"; 
-document.querySelector(".pdf-warning").style.display="none"; }
+    // PDF uyarı ekranını gizle
+    document.querySelector(".pdf-warning").style.display="none"; 
+    
+    // Evrakı göster
+    document.querySelector(".evrak").style.display="block"; 
+    
+    // Modal-body koyuluk zaten var, gerekirse daha koyu yapabilirsin
+    document.querySelector(".modal-body").style.background = "rgba(0,0,0,0.7)";
+}
   
 var toastTimeout;
 var remainingTime = 6000;
