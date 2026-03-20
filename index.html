@@ -581,8 +581,35 @@ remainingTime = 6000;
 
 }
 
-function openModal(){ 
-document.getElementById("modal").style.display="flex"; }
+function openModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "flex";
+
+  // Reset modal header/footer
+  document.querySelector(".modal-header").style.display = "flex";
+  document.querySelector(".modal-footer").style.display = "block";
+
+  // Reset pdf warning
+  const pdfWarning = document.querySelector(".pdf-warning");
+  pdfWarning.style.display = window.innerWidth <= 1000 ? "flex" : "none"; // medya query gibi
+
+  // Reset evrak
+  const evrak = document.querySelector(".evrak");
+  evrak.style.display = "block";
+  evrak.style.width = "100%";
+  evrak.style.height = "auto";
+  evrak.style.maxWidth = "1000px";
+  evrak.style.maxHeight = "auto";
+  evrak.style.objectFit = "contain";
+
+  // Reset modal-body
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.style.background = window.innerWidth <= 1000 ? "white" : "rgba(0,0,0,0.34)";
+  modalBody.style.padding = window.innerWidth <= 1000 ? "30px 20px" : "30px 20px";
+  modalBody.style.display = "block";
+  modalBody.style.justifyContent = "flex-start";
+  modalBody.style.alignItems = "flex-start";
+}
 
 function closeModal(){
 document.getElementById("modal").style.display="none";
