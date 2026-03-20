@@ -581,34 +581,8 @@ remainingTime = 6000;
 
 }
 
-function openModal() {
-  const modal = document.getElementById("modal");
-  modal.style.display = "flex";
-
-  // Modal header ve footer her zaman görünür
-  document.querySelector(".modal-header").style.display = "flex";
-  document.querySelector(".modal-footer").style.display = "block";
-
-  // PDF uyarısı sıfırla
-  const pdfWarning = document.querySelector(".pdf-warning");
-  pdfWarning.style.display = window.innerWidth <= 1000 ? "flex" : "none"; // mobil görünüm
-
-  // Evrak sıfırla
-  const evrak = document.querySelector(".evrak");
-  evrak.style.display = "block";
-  evrak.style.width = "";
-  evrak.style.height = "";
-  evrak.style.maxWidth = "";
-  evrak.style.maxHeight = "";
-  evrak.style.objectFit = "";
-
-  // Modal-body stilini sıfırla
-  const modalBody = document.querySelector(".modal-body");
-  modalBody.style.background = "";
-  modalBody.style.padding = "";
-  modalBody.style.display = "";
-  modalBody.style.justifyContent = "";
-  modalBody.style.alignItems = "";
+function openModal(){ 
+  document.getElementById("modal").style.display="flex"; 
 }
 
 function closeModal(){
