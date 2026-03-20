@@ -468,17 +468,25 @@ function excelHata(){
 }
   
 function openDocument(){ 
-    // PDF uyarı, header ve footer gibi diğer tüm içerikleri gizle
+    // Modal içindeki tüm öğeleri gizle
     document.querySelector(".modal-header").style.display = "none";
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
-    
-    // Evrakı göster
+
+    // Modal-body'yi temizle ve koyuluk/padding kaldır
+    var modalBody = document.querySelector(".modal-body");
+    modalBody.style.background = "transparent";
+    modalBody.style.padding = "0";
+    modalBody.style.justifyContent = "center";
+    modalBody.style.alignItems = "center";
+    modalBody.style.display = "flex";
+
+    // Evrakı tam ekran yap
     var evrak = document.querySelector(".evrak");
     evrak.style.display = "block";
-    
-    // Modal-body koyuluğunu bırak
-    document.querySelector(".modal-body").style.background = "rgba(0,0,0,0.7)";
+    evrak.style.width = "100%";
+    evrak.style.height = "100%";
+    evrak.style.objectFit = "contain"; // tam sığdırır, oran bozulmaz
 }
   
 var toastTimeout;
