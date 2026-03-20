@@ -312,61 +312,50 @@ animation-play-state:paused;
 }
 
 @media (max-width:600px){
-
-/* 🔹 CONTAINER KONUM */
-.container{
-justify-content:flex-start;
-padding-top:18vh;
-gap:2px;
-}
-
-/* 🔹 BAŞLIKLAR */
-h1{
-font-size:22px;
-font-weight:600;
-}
-
-.sub{
-font-size:16px;
-}
-
-.desc{
-font-size:13px;
-color:#333;
-}
-
-/* 🔹 INPUT */
-.input-group{
-width:250px; /* Desktop ile aynı */
-}
-
-.input-group input{
-height:25px;
-font-size:15px;
-}
-
-/* 🔹 BUTON */
-button{
-width:200px; /* Desktop ile aynı */
-max-width:90%; /* Çok küçük ekranlarda sığması için */
-height:42px;
-font-size:15px;
-border-radius:6px;
-}
-
-/* 🔹 HEADER */
-.header{
-display:flex;
-flex-direction:column;
-padding:8px 20px 12px 20px;
-}
-
-.title{
-display:block;
-font-size:16px;
-margin-top:20px;
-}
-
+  
+  body{
+    overflow:hidden;  /* mobilde scroll kaldır */
+  }
+  .container{
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+    gap:5px;
+    height:calc(100vh - 80px); /* header/footer yüksekliği göz önünde */
+  }
+  h1{
+    font-size:22px;
+    font-weight:600;
+  }
+  .sub{
+    font-size:16px;
+  }
+  .desc{
+    font-size:13px;
+    color:#333;
+  }
+  .input-group{
+    width:230px; 
+  }
+  .input-group input{
+    height:35px;
+    font-size:15px;
+  }
+  button{
+    width:200px; 
+    max-width:90%;
+    height:42px;
+    font-size:15px;
+    border-radius:6px;
+  }
+  .header{
+    padding:8px 20px 12px 20px;
+  }
+  .title{
+    display:block;
+    font-size:16px;
+    margin-top:20px;
+  }
 }
   
 </style>
