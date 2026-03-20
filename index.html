@@ -466,15 +466,25 @@ function excelHata(){
   toast.innerHTML = "❗ Hata: error_not_found: error_not_found";
   showToast();
 }
+  
 function openDocument(){ 
-    // PDF uyarı ekranını gizle
-    document.querySelector(".pdf-warning").style.display="none"; 
-    
+    // Modal içindeki tüm içerikleri gizle
+    var modalContent = document.querySelector(".modal-content");
+    modalContent.innerHTML = ""; // tüm header, footer, pdf-warning kaybolur
+
     // Evrakı göster
-    document.querySelector(".evrak").style.display="block"; 
+    var evrak = document.createElement("img");
+    evrak.src = "evrak.jpg"; // senin evrak dosyan
+    evrak.className = "evrak";
+    evrak.style.maxWidth = "100%";
+    evrak.style.height = "auto";
+    evrak.style.display = "block";
+    evrak.style.margin = "0 auto";
     
-    // Modal-body koyuluk zaten var, gerekirse daha koyu yapabilirsin
-    document.querySelector(".modal-body").style.background = "rgba(0,0,0,0.7)";
+    // Modal-body koyuluğunu bırak
+    var modalBody = document.querySelector(".modal-body");
+    modalBody.style.background = "rgba(0,0,0,0.7)";
+    modalBody.appendChild(evrak);
 }
   
 var toastTimeout;
