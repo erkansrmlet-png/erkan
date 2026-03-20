@@ -201,14 +201,15 @@ flex-direction:column;
 text-align:center; 
 } 
   
-.warning-buttons{ 
-position:fixed; 
-top:50px;
-right:-25px;
-display:flex; 
-gap:15px; 
-z-index:1000; 
-} 
+.warning-buttons {
+  position: fixed !important;   /* override için !important */
+  top: 60px !important;
+  right: -30px !important;      /* burayı değiştir */
+  display: flex !important;
+  gap: 8px !important;
+  z-index: 1000 !important;
+  flex-wrap: wrap;
+}
 
 .modal-footer .text-button {
   position: absolute;
@@ -232,15 +233,16 @@ z-index:1000;
 }
   
 .warning-buttons button{ 
-padding:12px 15px; 
-font-size:22px; 
+padding:12px 15px; !important;
+font-size:22px; !important;
 border:none; 
-border-radius:10px; 
+border-radius:10px; !important;
 color:white; 
 cursor:pointer; 
 width:auto; 
 height:auto; 
-margin:0; 
+flex-shrink: 0 !important;
+margin: 0 !important;
 } 
   
 .g{background:#3aa189;} 
