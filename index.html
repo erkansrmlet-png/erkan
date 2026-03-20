@@ -426,7 +426,7 @@ Rapor Sorgula
 
 <div class="modal-icons">
 <img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
-<img src="excel.png" width="38">
+<img src="excel.png" width="38" class="icon" onclick="excelHata()">
 <img src="close.png" width="34" class="icon" onclick="closeModal()">
 </div>
 
@@ -459,6 +459,17 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 </div>
 
 <script>
+
+function excelHata(){
+
+  var toast = document.getElementById("toast");
+
+  // mesajı değiştir
+  toast.innerHTML = "❗ Hata: error_not_found: error_not_found ";
+
+  showToast();
+
+}
   
 function openDocument(){ 
 document.querySelector(".evrak").style.display="block"; 
