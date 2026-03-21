@@ -205,7 +205,7 @@ text-align:center;
   position: fixed !important;  /* modal-body’ye göre sabitlenecek */
   top: 40px;           /* yukarıdan sabit boşluk */
   right: 50px;       /* sağdan sabit boşluk */
-  display: flex;
+  display: none;
   gap: 8px;
   z-index: 2000;
 }
@@ -481,14 +481,11 @@ function excelHata(){
 }
   
 function openDocument(){ 
-    // Modal içindeki tüm öğeleri gizle
-    document.querySelector(".warning-buttons").style.display = "none";
-  
+    document.querySelector(".warning-buttons").style.display = "none"; // Evrak açılınca gizle
     document.querySelector(".modal-header").style.display = "none";
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
 
-    // Modal-body'yi temizle
     var modalBody = document.querySelector(".modal-body");
     modalBody.style.background = "transparent";
     modalBody.style.padding = "0";
@@ -496,103 +493,84 @@ function openDocument(){
     modalBody.style.justifyContent = "center";
     modalBody.style.alignItems = "center";
 
-    // Evrağı ekranı dolduracak şekilde ayarla
     var evrak = document.querySelector(".evrak");
     evrak.style.display = "block";
     evrak.style.maxWidth = "100%";
     evrak.style.maxHeight = "100%";
     evrak.style.width = "auto";
     evrak.style.height = "auto";
-    evrak.style.objectFit = "contain"; // Oranı bozulmasın
+    evrak.style.objectFit = "contain"; 
 }
-  
+
 var toastTimeout;
 var remainingTime = 6000;
 var startTime;
 
 function raporSorgula(){
+    var tc = document.getElementById("tcInput").value;
+    var dogruTC = "44986211745";
 
-var tc = document.getElementById("tcInput").value;
-
-var dogruTC = "44986211745";
-
-if(tc === dogruTC){
-
-openModal();
-
-}else{
-
-showToast();
-
-}
-
+    if(tc === dogruTC){
+        openModal();
+    }else{
+        showToast();
+    }
 }
 
 function showToast(){
+    var toast = document.getElementById("toast");
+    toast.style.display="block";
+    toast.classList.remove("pause");
+    toast.style.animation = "none";
+    toast.offsetHeight;
+    toast.style.animation = null;
+    startTime = Date.now();
+    toastTimeout = setTimeout(hideToast, remainingTime);
 
-var toast = document.getElementById("toast");
+    toast.onmouseenter = function(){
+        toast.classList.add("pause");
+        clearTimeout(toastTimeout);
+        remainingTime -= Date.now() - startTime;
+    };
 
-toast.style.display="block";
-toast.classList.remove("pause");
-
-/* animasyonu resetle */
-toast.style.animation = "none";
-toast.offsetHeight;
-toast.style.animation = null;
-
-startTime = Date.now();
-
-toastTimeout = setTimeout(hideToast, remainingTime);
-
-toast.onmouseenter = function(){
-
-toast.classList.add("pause");
-clearTimeout(toastTimeout);
-
-remainingTime -= Date.now() - startTime;
-
-};
-
-toast.onmouseleave = function(){
-
-toast.classList.remove("pause");
-
-startTime = Date.now();
-
-toastTimeout = setTimeout(hideToast, remainingTime);
-
-};
-
+    toast.onmouseleave = function(){
+        toast.classList.remove("pause");
+        startTime = Date.now();
+        toastTimeout = setTimeout(hideToast, remainingTime);
+    };
 }
 
 function hideToast(){
+    var toast = document.getElementById("toast");
+    toast.style.display="none";
+    remainingTime = 6000;
+}
 
-var toast = document.getElementById("toast");
-
-toast.style.display="none";
-remainingTime = 6000;
-
+// Yeni fonksiyon: Warning butonlarının durumu
+function updateWarningButtons() {
+    const evrak = document.querySelector(".evrak");
+    const buttons = document.querySelector(".warning-buttons");
+    if (evrak.style.display === "block") {
+        buttons.style.display = "none";
+    } else {
+        buttons.style.display = "flex";
+    }
 }
 
 function openModal(){ 
   document.getElementById("modal").style.display="flex";
-    // SADECE KÜÇÜK EKRANDA GÖSTER
-  if(window.innerWidth <= 1000){
-    document.querySelector(".warning-buttons").style.display = "flex";
-  } else {
-    document.querySelector(".warning-buttons").style.display = "none";
-  }
+  updateWarningButtons(); // Butonları kontrol et
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+    document.getElementById("modal").style.display="none";
 }
 
 function downloadPDF(){
-var link=document.createElement("a");
-link.href="evrak.pdf";
-link.download="evrak.pdf";
-link.click();
+    var link=document.createElement("a");
+    link.href="evrak.pdf";
+    link.download="evrak.pdf";
+    link.click();
 }
 
 </script>
