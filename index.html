@@ -384,35 +384,23 @@ animation-play-state:paused;
     margin-top:20px;
   }
 
-  .pdf-warning {
-    display: flex !important;
-    position: relative;  /* Ebeveyn flexi bozuyor, relative yap */
-    flex-direction: column;
-    align-items: flex-start; /* butonları sola değil sağa yaslamak için parent ayarlayabiliriz */
-    justify-content: flex-start;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    background: white;
-  }
-
+  /* 🔹 Mobilde sabit sağda warning butonları */
   .warning-buttons {
-    position: fixed !important;  /* ekran sabitle */
-    top: 50px !important;
-    right: 8px !important;       /* sağa yasla */
+    position: fixed !important;
+    top: 100px !important;
+    right: 8px !important;
     left: auto !important;
-    gap: 5px !important;
-    z-index: 1000 !important;
+    z-index: 1500 !important;
     display: flex !important;
+    gap: 5px !important;
     flex-wrap: wrap;
   }
-
   .warning-buttons button {
-    padding: 6px 8px !important;
+    padding: 6px 10px !important;
     font-size: 16px !important;
     border-radius: 8px !important;
+    min-width: 60px;
   }
-  
 }
 
 </style>
