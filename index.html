@@ -481,7 +481,9 @@ function excelHata(){
 }
   
 function openDocument(){ 
-    document.querySelector(".warning-buttons").style.display = "none"; // Evrak açılınca gizle
+    // PDF açılınca butonları gizle
+    document.querySelector(".warning-buttons").style.display = "none";
+  
     document.querySelector(".modal-header").style.display = "none";
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
@@ -557,9 +559,18 @@ function updateWarningButtons() {
     }
 }
 
+
 function openModal(){ 
-  document.getElementById("modal").style.display="flex";
-  updateWarningButtons(); // Butonları kontrol et
+    document.getElementById("modal").style.display="flex";
+
+    const warningButtons = document.querySelector(".warning-buttons");
+
+    // Ekran küçükse göster, büyükse gizle
+    if(window.innerWidth <= 1000){
+        warningButtons.style.display = "flex";
+    } else {
+        warningButtons.style.display = "none";
+    }
 }
 
 function closeModal(){
