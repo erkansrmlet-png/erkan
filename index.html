@@ -202,14 +202,12 @@ text-align:center;
 } 
   
 .warning-buttons {
-  position: absolute !important;  /* modal-body’ye göre sabitlenecek */
-  top: -50px !important;           /* yukarıdan sabit boşluk */
-  right: 20px !important;         /* sağdan sabit boşluk */
+  position: absolute;  /* modal-body’ye göre sabitlenecek */
+  top: 10px;           /* yukarıdan sabit boşluk */
+  right: 20px;         /* sağdan sabit boşluk */
   display: flex;
-  justify-content: flex-end; /* içindekileri sağa yasla */
   gap: 8px;
   z-index: 1000;
-  padding-right: 10px;      /* sağdan boşluk */
 }
 
 .warning-buttons button{ 
@@ -449,15 +447,14 @@ Rapor Sorgula
 
 </div>
 
-<div class="modal-body">
-<div class="pdf-warning">
 <div class="warning-buttons"> 
-<button class="g" onclick="openDocument()">
-<b>Görüntüle</b></button> 
-<button class="b" onclick="downloadPDF()">
-<b>İndir</b></button> 
-<button class="r" onclick="closeModal()">
-<b>Kapat</b></button> </div> 
+<button class="g" onclick="openDocument()"><b>Görüntüle</b></button> 
+<button class="b" onclick="downloadPDF()"><b>İndir</b></button> 
+<button class="r" onclick="closeModal()"><b>Kapat</b></button> </div> 
+  
+<div class="modal-body">
+  
+<div class="pdf-warning">
   
 <div class="warning-text"> 
 PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz. 
