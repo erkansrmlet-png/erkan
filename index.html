@@ -202,14 +202,20 @@ text-align:center;
 } 
   
 .warning-buttons {
-  position: fixed;   /* override için !important */
-  top: 50px;
-  right: 60px;      /* burayı değiştir */
+  position: absolute !important;  /* modal-body’ye göre sabitlenecek */
+  top: 50px !important;           /* yukarıdan sabit boşluk */
+  right: 60px !important;         /* sağdan sabit boşluk */
   display: flex;
   justify-content: flex-end; /* içindekileri sağa yasla */
   gap: 8px;
   z-index: 1000;
   padding-right: 10px;      /* sağdan boşluk */
+}
+
+.warning-buttons button{ 
+padding:12px 15px;
+font-size:22px;
+border-radius:10px;
 }
 
 .modal-footer .text-button {
@@ -232,19 +238,6 @@ text-align:center;
   transform: translate(-50%, 0);
   box-shadow: none;
 }
-  
-.warning-buttons button{ 
-padding:12px 15px;
-font-size:22px;
-border:none; 
-border-radius:10px;
-color:white; 
-cursor:pointer; 
-width:auto; 
-height:auto; 
-flex-shrink: 0;
-margin: 0;
-} 
   
 .g{background:#3aa189;} 
 .b{background:#3a7fb0;} 
@@ -384,16 +377,10 @@ animation-play-state:paused;
     margin-top:20px;
   }
   .warning-buttons {
-    position: absolute !important;  /* fixed yerine modal-body'ye göre konumlanır */
-    top: 10px !important;           /* üstten boşluk */
-    right: 10px !important;         /* sağdan boşluk */
-    flex-direction: row !important; /* yan yana */
-    justify-content: flex-end !important;
+    top: 10px !important;
+    right: 10px !important;
     gap: 5px !important;
-    padding: 0 !important;
-    width: auto !important;
   }
-
   .warning-buttons button {
     padding: 8px 12px !important;
     font-size: 16px !important;
