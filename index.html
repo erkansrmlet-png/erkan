@@ -561,16 +561,7 @@ function updateWarningButtons() {
 
 
 function openModal(){ 
-    document.getElementById("modal").style.display="flex";
-
-    const warningButtons = document.querySelector(".warning-buttons");
-
-    // Ekran küçükse göster, büyükse gizle
-    if(window.innerWidth <= 1000){
-        warningButtons.style.display = "flex";
-    } else {
-        warningButtons.style.display = "none";
-    }
+    document.getElementById("modal").style.display="none";
 }
 
 function closeModal(){
