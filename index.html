@@ -180,6 +180,30 @@ flex:1;
 overflow:auto;
 text-align:center;
 position:relative;
+
+.warning-buttons {
+  position: fixed !important;   /* override için !important */
+  top: 50px !important;
+  right: 55px !important;      /* burayı değiştir */
+  display: flex !important;
+  justify-content: flex-end; /* içindekileri sağa yasla */
+  gap: 8px !important;
+  z-index: 1000 !important;
+  padding-right: 10px;      /* sağdan boşluk */
+}
+
+.warning-buttons button{ 
+padding:12px 15px !important;
+font-size:22px !important;
+border:none; 
+border-radius:10px !important;
+color:white; 
+cursor:pointer; 
+width:auto; 
+height:auto; 
+flex-shrink: 0 !important;
+margin: 0 !important;
+}
 }
 
 .evrak{
@@ -200,17 +224,6 @@ justify-content:center;
 flex-direction:column; 
 text-align:center; 
 } 
-  
-.warning-buttons {
-  position: fixed !important;   /* override için !important */
-  top: 50px !important;
-  right: 55px !important;      /* burayı değiştir */
-  display: flex !important;
-  flex-direction: row;
-  gap: 8px !important;
-  z-index: 1000 !important;
-  padding-right: 10px;      /* sağdan boşluk */
-}
 
 .modal-footer .text-button {
   position: absolute;
@@ -232,19 +245,6 @@ text-align:center;
   transform: translate(-50%, 0);
   box-shadow: none;
 }
-  
-.warning-buttons button{ 
-padding:12px 15px !important;
-font-size:22px !important;
-border:none; 
-border-radius:10px !important;
-color:white; 
-cursor:pointer; 
-width:auto; 
-height:auto; 
-flex-shrink: 0 !important;
-margin: 0 !important;
-} 
   
 .g{background:#3aa189;} 
 .b{background:#3a7fb0;} 
