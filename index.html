@@ -383,6 +383,22 @@ animation-play-state:paused;
     font-size:16px;
     margin-top:20px;
   }
+  .warning-buttons {
+    position: absolute !important;  /* fixed yerine modal-body'ye göre konumlanır */
+    top: 10px !important;           /* üstten boşluk */
+    right: 10px !important;         /* sağdan boşluk */
+    flex-direction: row !important; /* yan yana */
+    justify-content: flex-end !important;
+    gap: 5px !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  .warning-buttons button {
+    padding: 8px 12px !important;
+    font-size: 16px !important;
+    border-radius: 6px !important;
+  }
 }
 
 </style>
