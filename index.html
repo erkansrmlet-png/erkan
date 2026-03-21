@@ -13,8 +13,8 @@ body{
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  overflow-x:hidden; /* yatay scroll gizle */
-  overflow-y:auto;   /* dikey scroll açık */
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 .header{
@@ -224,7 +224,7 @@ button:hover{
   cursor:pointer;
 }
 
-/* WARNING BUTTONS SABİT SAĞ ÜSTTE */
+/* SABİT WARNING BUTTONS */
 .warning-buttons {
   position: fixed !important;
   top: 50px !important;
@@ -402,7 +402,6 @@ button:hover{
       <img src="evrak.jpg" class="evrak">
     </div>
 
-    <!-- SABİT WARNING BUTTONS -->
     <div class="warning-buttons"> 
       <button class="g" onclick="openDocument()"><b>Görüntüle</b></button> 
       <button class="b" onclick="downloadPDF()"><b>İndir</b></button> 
