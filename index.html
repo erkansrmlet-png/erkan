@@ -206,8 +206,10 @@ text-align:center;
   top: 50px !important;
   right: 60px !important;      /* burayı değiştir */
   display: flex !important;
+  justify-content: flex-end; /* içindekileri sağa yasla */
   gap: 8px !important;
   z-index: 1000 !important;
+  padding-right: 10px;      /* sağdan boşluk */
 }
 
 .modal-footer .text-button {
@@ -232,12 +234,14 @@ text-align:center;
 }
   
 .warning-buttons button{ 
-padding:12px 5px !important;
+padding:12px 15px !important;
 font-size:22px !important;
 border:none; 
 border-radius:10px !important;
 color:white; 
-cursor:pointer;
+cursor:pointer; 
+width:auto; 
+height:auto; 
 flex-shrink: 0 !important;
 margin: 0 !important;
 } 
@@ -379,18 +383,22 @@ animation-play-state:paused;
     font-size:16px;
     margin-top:20px;
   }
-.warning-buttons {
-    top: 10px !important;
-    right: 10px !important;
+  .warning-buttons {
+    position: absolute !important;  /* fixed yerine modal-body'ye göre konumlanır */
+    top: 10px !important;           /* üstten boşluk */
+    right: 10px !important;         /* sağdan boşluk */
+    flex-direction: row !important; /* yan yana */
+    justify-content: flex-end !important;
     gap: 5px !important;
+    padding: 0 !important;
+    width: auto !important;
   }
 
-.warning-buttons button {
+  .warning-buttons button {
     padding: 8px 12px !important;
     font-size: 16px !important;
     border-radius: 6px !important;
   }
-
 }
 
 </style>
