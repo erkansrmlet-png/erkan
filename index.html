@@ -482,6 +482,8 @@ function excelHata(){
   
 function openDocument(){ 
     // Modal içindeki tüm öğeleri gizle
+    document.querySelector(".warning-buttons").style.display = "none";
+  
     document.querySelector(".modal-header").style.display = "none";
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
@@ -574,6 +576,9 @@ remainingTime = 6000;
 
 function openModal(){ 
   document.getElementById("modal").style.display="flex"; 
+
+  // BUTONLARI GÖSTER
+  document.querySelector(".warning-buttons").style.display = "flex";
 }
 
 function closeModal(){
