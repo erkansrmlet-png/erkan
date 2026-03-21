@@ -575,10 +575,13 @@ remainingTime = 6000;
 }
 
 function openModal(){ 
-  document.getElementById("modal").style.display="flex"; 
-
-  // BUTONLARI GÖSTER
-  document.querySelector(".warning-buttons").style.display = "flex";
+  document.getElementById("modal").style.display="flex";
+    // SADECE KÜÇÜK EKRANDA GÖSTER
+  if(window.innerWidth <= 1000){
+    document.querySelector(".warning-buttons").style.display = "flex";
+  } else {
+    document.querySelector(".warning-buttons").style.display = "none";
+  }
 }
 
 function closeModal(){
