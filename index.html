@@ -201,25 +201,15 @@ flex-direction:column;
 text-align:center; 
 } 
   
-/* WARNING BUTTONS - SABİT KONUM */
 .warning-buttons {
-  position: fixed !important;   /* ekranın sabit köşesine yapışır */
-  top: 50px !important;         /* üstten 50px boşluk */
-  right: 60px !important;       /* sağdan 60px sabit */
+  position: fixed !important;   /* override için !important */
+  top: 50px !important;
+  right: 60px !important;      /* burayı değiştir */
   display: flex !important;
-  flex-direction: row;          /* yan yana */
-  gap: 8px !important;          /* buton arası boşluk */
+  justify-content: flex-end; /* içindekileri sağa yasla */
+  gap: 8px !important;
   z-index: 1000 !important;
-  padding: 0 !important;        /* ekstra padding kaldır */
-  width: 400px !important;       /* genişlik otomatik */
-}
-
-/* BUTTON BOYUTU */
-.warning-buttons button {
-  padding: 8px 12px !important; /* buton içi boşluk */
-  font-size: 16px !important;   /* yazı boyutu */
-  border-radius: 6px !important;
-  flex-shrink: 0 !important;    /* küçülmesin */
+  padding-right: 10px;      /* sağdan boşluk */
 }
 
 .modal-footer .text-button {
@@ -242,6 +232,19 @@ text-align:center;
   transform: translate(-50%, 0);
   box-shadow: none;
 }
+  
+.warning-buttons button{ 
+padding:12px 15px !important;
+font-size:22px !important;
+border:none; 
+border-radius:10px !important;
+color:white; 
+cursor:pointer; 
+width:auto; 
+height:auto; 
+flex-shrink: 0 !important;
+margin: 0 !important;
+} 
   
 .g{background:#3aa189;} 
 .b{background:#3a7fb0;} 
