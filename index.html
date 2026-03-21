@@ -6,216 +6,211 @@
 <title>Qr Code Rapor Sorgulama</title>
 
 <style>
-
 body{
-margin:0;
-font-family:Helvetica, Arial, sans-serif;
-background:white;
-display:flex;
-flex-direction:column;
-min-height:100vh;
-overflow-x:hidden; /* yatay scroll gizle */
-overflow-y:auto;   /* dikey scroll açık */
+  margin:0;
+  font-family:Helvetica, Arial, sans-serif;
+  background:white;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  overflow-x:hidden; /* yatay scroll gizle */
+  overflow-y:auto;   /* dikey scroll açık */
 }
 
 .header{
-padding:2px 32px 10px 32px;
-display:flex;
-flex-direction:column;
+  padding:2px 32px 10px 32px;
+  display:flex;
+  flex-direction:column;
 }
 
 .title{
-font-size:16.23px;
-margin-top:32.8px;
+  font-size:16.23px;
+  margin-top:32.8px;
 }
 
 .bluebar{
-height:2px;
-background:#2d7df6;
-margin-top:3.2px;
+  height:2px;
+  background:#2d7df6;
+  margin-top:3.2px;
 }
 
 .container{ 
-flex:1; 
-display:flex; 
-flex-direction:column; 
-align-items:center; 
-justify-content:center; 
-text-align:center; 
-padding:40px 20px; 
+  flex:1; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  justify-content:center; 
+  text-align:center; 
+  padding:40px 20px; 
 }
 
 h1{
-font-size:20px;
-margin-bottom:5px;
+  font-size:20px;
+  margin-bottom:5px;
 }
 
 .sub{
-font-size:16px;
-font-weight:normal;
-margin-top:7px;
+  font-size:16px;
+  font-weight:normal;
+  margin-top:7px;
 }
 
 .desc{
-color:black;
-font-size:12px;
-margin-top:6px;
+  color:black;
+  font-size:12px;
+  margin-top:6px;
 }
 
 .input-group{
-margin-top:25px;
-margin-right:20px;
-width:230px; /* desktop ile aynı */
-position:relative;
+  margin-top:25px;
+  margin-right:20px;
+  width:230px;
+  position:relative;
 }
 
 .input-group input{
-width:100%;
-padding:10px;
-font-size:15px;
-border-radius:4px;
-border:1px solid #ccc;
-outline:none;
+  width:100%;
+  padding:10px;
+  font-size:15px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  outline:none;
 }
 
 .input-group input:focus{
-border-color:#2d7df6;
+  border-color:#2d7df6;
 }
 
 .input-group label{
-position:absolute;
-left:10px;
-top:11px;
-color:#dddddd;
-font-size:14px;
-background:white;
-padding:0 4px;
-transition:0.2s;
-pointer-events:none;
+  position:absolute;
+  left:10px;
+  top:11px;
+  color:#dddddd;
+  font-size:14px;
+  background:white;
+  padding:0 4px;
+  transition:0.2s;
+  pointer-events:none;
 }
 
 .input-group input:focus + label,
 .input-group input:valid + label{
-top:-8px;
-font-size:12px;
-color:#2d7df6;
+  top:-8px;
+  font-size:12px;
+  color:#2d7df6;
 }
   
 button{
-margin:25px auto 0 auto;
-display:block;
-width:750px; 
-max-width:50%; 
-height:35px;
-padding:7px 20px 5px 10px;
-font-family:Helvetica;
-font-size:14.7px;
-background:linear-gradient(to bottom,#ffa726,#fb8c00);
-color:white;
-border:none;
-border-radius:4px;
-cursor:pointer;
-transition:all .2s ease;
+  margin:25px auto 0 auto;
+  display:block;
+  width:750px; 
+  max-width:50%; 
+  height:35px;
+  padding:7px 20px 5px 10px;
+  font-family:Helvetica;
+  font-size:14.7px;
+  background:linear-gradient(to bottom,#ffa726,#fb8c00);
+  color:white;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all .2s ease;
 }
 
 button:hover{
-transform:translateY(-1px);
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
-background:#e67e00;
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.2);
+  background:#e67e00;
 }
 
 .footer{
-text-align:center;
-padding:14px;
-background:#f3f3f3;
-border-top:1px solid #cfcfcf;
-font-size:14px;
-color:#555;
-box-shadow:0 5px 8px rgba(0,0,0,0.40);
+  text-align:center;
+  padding:14px;
+  background:#f3f3f3;
+  border-top:1px solid #cfcfcf;
+  font-size:14px;
+  color:#555;
+  box-shadow:0 5px 8px rgba(0,0,0,0.40);
 }
 
 .modal{
-display:none;
-position:fixed;
-z-index:999;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
+  display:none;
+  position:fixed;
+  z-index:999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
 }
 
 .modal-content{
-background:#bfbfbf;
-width:90%;
-max-width:1200px;
-height:90%;
-border-radius:6px;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-display:flex;
-flex-direction:column;
-overflow:hidden;
+  background:#bfbfbf;
+  width:90%;
+  max-width:1200px;
+  height:90%;
+  border-radius:6px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
 }
 
 .modal-header{
-background:white;
-padding:16px 25px;
-border-bottom:1px solid #ddd;
-height:40px;
+  background:white;
+  padding:16px 25px;
+  border-bottom:1px solid #ddd;
+  height:40px;
 }
 
 .modal-icons{
-float:right;
-display:flex;
-gap:10px;
-align-items:center;
+  float:right;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
 .modal-body{
-background:rgba(0,0,0,0.34);
-padding:30px 20px;
-flex:1;
-overflow:auto;
-text-align:center;
-position:relative;
+  background:rgba(0,0,0,0.34);
+  padding:30px 20px;
+  flex:1;
+  overflow:auto;
+  text-align:center;
+  position:relative;
 }
 
 .evrak{
-max-width:1000px;
-width:100%;
-height:auto;
-background:white;
-box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  max-width:1000px;
+  width:100%;
+  height:auto;
+  background:white;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
 }
 
 .pdf-warning{
-display:none; 
-height:100%; 
-width:100%; 
-background:white; 
-align-items:center; 
-justify-content:center; 
-flex-direction:column; 
-text-align:center; 
+  display:none; 
+  height:100%; 
+  width:100%; 
+  background:white; 
+  align-items:center; 
+  justify-content:center; 
+  flex-direction:column; 
+  text-align:center; 
 } 
-  
-.warning-buttons {
-  position: fixed !important;   /* override için !important */
-  top: 50px !important;
-  right: 60px !important;      /* burayı değiştir */
-  display: flex !important;
-  justify-content: flex-end; /* içindekileri sağa yasla */
-  gap: 8px !important;
-  z-index: 1000 !important;
-  padding-right: 10px;      /* sağdan boşluk */
+
+.modal-footer{
+  position:relative;
+  padding:25px 20px;
+  background:white;
+  border-top:1px solid #ddd;
 }
 
-.modal-footer .text-button {
+.modal-footer button {
   position: absolute;
   left: 95%;
-  top: -25px;
+  top: -20px;
   transform: translate(-50%, 0);
   background: none;
   border: none;
@@ -223,132 +218,89 @@ text-align:center;
   color: #1976d2;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: none;
-}
-
-.modal-footer .text-button:hover {
-  background: none;
-  color: #1976d2;
-  transform: translate(-50%, 0);
-  box-shadow: none;
-}
-  
-.warning-buttons button{ 
-padding:12px 15px !important;
-font-size:22px !important;
-border:none; 
-border-radius:10px !important;
-color:white; 
-cursor:pointer; 
-width:auto; 
-height:auto; 
-flex-shrink: 0 !important;
-margin: 0 !important;
-} 
-  
-.g{background:#3aa189;} 
-.b{background:#3a7fb0;} 
-.r{background:#e74c3c;} 
-  
-.warning-text{ 
-font-size:30px; 
-color:#333; 
-max-width:900px; 
-} 
-  
-@media (max-width:1000px){ 
-  
-.modal-body { 
-background: white; 
-} 
-  
-.evrak{ 
-display:none; 
-} 
-  
-.pdf-warning{ 
-display:flex; 
-} 
-  
-.modal-icons{ 
-display:none; 
-} 
-}
-
-.modal-footer{
-position:relative;
-padding:25px 20px;
-background:white;
-border-top:1px solid #ddd;
-}
-
-.modal-footer button {
-position: absolute;
-left: 95%;
-top: -20px;
-transform: translate(-50%, 0);
-background: none;      /* arka plan kaldırıldı */
-border: none;          /* çerçeve kaldırıldı */
-padding: 0;            /* ekstra boşluk kaldırıldı */
-color: #1976d2;        /* yazı rengi */
-font-size: 14px;
-cursor: pointer;
 }
 
 .icon{
-cursor:pointer;
+  cursor:pointer;
+}
+
+/* WARNING BUTTONS SABİT SAĞ ÜSTTE */
+.warning-buttons {
+  position: fixed !important;
+  top: 50px !important;
+  right: 20px !important;
+  display: flex !important;
+  gap: 8px !important;
+  z-index: 1500 !important;
+}
+
+.warning-buttons button {
+  padding: 12px 15px !important;
+  font-size: 22px !important;
+  border: none;
+  border-radius: 10px !important;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.g{background:#3aa189;} 
+.b{background:#3a7fb0;} 
+.r{background:#e74c3c;} 
+
+.warning-text{ 
+  font-size:30px; 
+  color:#333; 
+  max-width:900px; 
 }
 
 /* TOAST HATA MESAJI */
-
 .toast{
-position:fixed;
-top:20px;
-right:20px;
-background:#1e1e1e;
-color:white;
-padding:14px 20px 22px 20px;
-border-radius:8px;
-font-size:20px;
-display:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-overflow:hidden;
-z-index: 2000; /* EKLEDİK */
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#1e1e1e;
+  color:white;
+  padding:14px 20px 22px 20px;
+  border-radius:8px;
+  font-size:20px;
+  display:none;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  overflow:hidden;
+  z-index: 2000;
 }
 
-/* ALTTAKİ SÜRE BAR */
 .toast::after{
-content:"";
-position:absolute;
-left:0;
-bottom:0;
-height:4px;
-width:100%;
-background:#e74c3c;
-animation:progress 6s linear forwards;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:4px;
+  width:100%;
+  background:#e74c3c;
+  animation:progress 6s linear forwards;
 }
 
 @keyframes progress{
-from{ width:100%; }
-to{ width:0%; }
+  from{ width:100%; }
+  to{ width:0%; }
 }
 
-/* HOVER'DA DURDUR */
 .toast.pause::after{
-animation-play-state:paused;
+  animation-play-state:paused;
 }
 
 @media (max-width:400px){
-  
   body{
-    overflow:hidden;  /* mobilde scroll kaldır */
+    overflow:hidden;
   }
   .container{
     justify-content:center;
     align-items:center;
     padding:10px;
     gap:1px;
-    height:calc(100vh - 80px); /* header/footer yüksekliği göz önünde */
+    height:calc(100vh - 80px);
   }
   h1{
     font-size:22px;
@@ -384,62 +336,47 @@ animation-play-state:paused;
     margin-top:20px;
   }
   .warning-buttons {
-    position: absolute !important;  /* fixed yerine modal-body'ye göre konumlanır */
-    top: 10px !important;           /* üstten boşluk */
-    right: 10px !important;         /* sağdan boşluk */
-    flex-direction: row !important; /* yan yana */
-    justify-content: flex-end !important;
+    top: 10px !important;
+    right: 10px !important;
     gap: 5px !important;
-    padding: 0 !important;
-    width: auto !important;
   }
-
   .warning-buttons button {
     padding: 8px 12px !important;
     font-size: 16px !important;
     border-radius: 6px !important;
   }
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="header">
-<div class="title">Qr Code Rapor Sorgulama</div>
-<div class="bluebar"></div>
+  <div class="title">Qr Code Rapor Sorgulama</div>
+  <div class="bluebar"></div>
 </div>
 
 <div class="container">
-
-<h1>ANTAKYA BELEDİYESİ</h1>
-
-<div class="sub">Qr Kod Rapor Sorgulama Ekranı</div>
-
-<div class="desc">T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</div>
-
-<div class="input-group">
-<input type="text" id="tcInput" required>
-<label>T.C. Kimlik No</label>
-</div>
-
-<button onclick="raporSorgula()">
-
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
-<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
-6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
-4.23-1.57l.27.28v.79l5 
-4.99L20.49 19l-4.99-5zm-6 
-0C7.01 14 5 11.99 5 
-9.5S7.01 5 9.5 5 14 
-7.01 14 9.5 11.99 14 
-9.5 14z"/>
-</svg>
-
-Rapor Sorgula
-</button>
-
+  <h1>ANTAKYA BELEDİYESİ</h1>
+  <div class="sub">Qr Kod Rapor Sorgulama Ekranı</div>
+  <div class="desc">T.C.Kimlik/Vergi No ile doğrulama yapmanız gerekmektedir.</div>
+  <div class="input-group">
+    <input type="text" id="tcInput" required>
+    <label>T.C. Kimlik No</label>
+  </div>
+  <button onclick="raporSorgula()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:5px;">
+      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
+      6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
+      4.23-1.57l.27.28v.79l5 
+      4.99L20.49 19l-4.99-5zm-6 
+      0C7.01 14 5 11.99 5 
+      9.5S7.01 5 9.5 5 14 
+      7.01 14 9.5 11.99 14 
+      9.5 14z"/>
+    </svg>
+    Rapor Sorgula
+  </button>
 </div>
 
 <div id="toast" class="toast">
@@ -447,47 +384,38 @@ Rapor Sorgula
 </div>
 
 <div id="modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-icons">
+        <img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
+        <img src="excel.png" width="38" class="icon" onclick="excelHata()">
+        <img src="close.png" width="34" class="icon" onclick="closeModal()">
+      </div>
+    </div>
 
-<div class="modal-content">
+    <div class="modal-body">
+      <div class="pdf-warning">
+        <div class="warning-text">
+          PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
+        </div>
+      </div>
+      <img src="evrak.jpg" class="evrak">
+    </div>
 
-<div class="modal-header">
+    <!-- SABİT WARNING BUTTONS -->
+    <div class="warning-buttons"> 
+      <button class="g" onclick="openDocument()"><b>Görüntüle</b></button> 
+      <button class="b" onclick="downloadPDF()"><b>İndir</b></button> 
+      <button class="r" onclick="closeModal()"><b>Kapat</b></button> 
+    </div>
 
-<div class="modal-icons">
-<img src="pdf.png" width="38" class="icon" onclick="downloadPDF()">
-<img src="excel.png" width="38" class="icon" onclick="excelHata()">
-<img src="close.png" width="34" class="icon" onclick="closeModal()">
-</div>
-
-</div>
-
-<div class="modal-body">
-<div class="pdf-warning">
-<div class="warning-buttons"> 
-<button class="g" onclick="openDocument()">
-<b>Görüntüle</b></button> 
-<button class="b" onclick="downloadPDF()">
-<b>İndir</b></button> 
-<button class="r" onclick="closeModal()">
-<b>Kapat</b></button> </div> 
-  
-<div class="warning-text"> 
-PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz. 
-</div>
-
-</div>
-<img src="evrak.jpg" class="evrak">
-</div>
-  
-<div class="modal-footer">
-  <button class="text-button" onclick="closeModal()">KAPAT</button>
-</div>
-
-</div>
-
+    <div class="modal-footer">
+      <button class="text-button" onclick="closeModal()">KAPAT</button>
+    </div>
+  </div>
 </div>
 
 <script>
-
 function excelHata(){
   var toast = document.getElementById("toast");
   toast.innerHTML = "❗ Hata: error_not_found: error_not_found";
@@ -495,12 +423,10 @@ function excelHata(){
 }
   
 function openDocument(){ 
-    // Modal içindeki tüm öğeleri gizle
     document.querySelector(".modal-header").style.display = "none";
     document.querySelector(".modal-footer").style.display = "none";
     document.querySelector(".pdf-warning").style.display = "none";
 
-    // Modal-body'yi temizle
     var modalBody = document.querySelector(".modal-body");
     modalBody.style.background = "transparent";
     modalBody.style.padding = "0";
@@ -508,14 +434,13 @@ function openDocument(){
     modalBody.style.justifyContent = "center";
     modalBody.style.alignItems = "center";
 
-    // Evrağı ekranı dolduracak şekilde ayarla
     var evrak = document.querySelector(".evrak");
     evrak.style.display = "block";
     evrak.style.maxWidth = "100%";
     evrak.style.maxHeight = "100%";
     evrak.style.width = "auto";
     evrak.style.height = "auto";
-    evrak.style.objectFit = "contain"; // Oranı bozulmasın
+    evrak.style.objectFit = "contain";
 }
   
 var toastTimeout;
@@ -523,67 +448,41 @@ var remainingTime = 6000;
 var startTime;
 
 function raporSorgula(){
-
-var tc = document.getElementById("tcInput").value;
-
-var dogruTC = "44986211745";
-
-if(tc === dogruTC){
-
-openModal();
-
-}else{
-
-showToast();
-
-}
-
+  var tc = document.getElementById("tcInput").value;
+  var dogruTC = "44986211745";
+  if(tc === dogruTC){
+    openModal();
+  }else{
+    showToast();
+  }
 }
 
 function showToast(){
+  var toast = document.getElementById("toast");
+  toast.style.display="block";
+  toast.classList.remove("pause");
+  toast.style.animation = "none";
+  toast.offsetHeight;
+  toast.style.animation = null;
+  startTime = Date.now();
+  toastTimeout = setTimeout(hideToast, remainingTime);
 
-var toast = document.getElementById("toast");
-
-toast.style.display="block";
-toast.classList.remove("pause");
-
-/* animasyonu resetle */
-toast.style.animation = "none";
-toast.offsetHeight;
-toast.style.animation = null;
-
-startTime = Date.now();
-
-toastTimeout = setTimeout(hideToast, remainingTime);
-
-toast.onmouseenter = function(){
-
-toast.classList.add("pause");
-clearTimeout(toastTimeout);
-
-remainingTime -= Date.now() - startTime;
-
-};
-
-toast.onmouseleave = function(){
-
-toast.classList.remove("pause");
-
-startTime = Date.now();
-
-toastTimeout = setTimeout(hideToast, remainingTime);
-
-};
-
+  toast.onmouseenter = function(){
+    toast.classList.add("pause");
+    clearTimeout(toastTimeout);
+    remainingTime -= Date.now() - startTime;
+  };
+  toast.onmouseleave = function(){
+    toast.classList.remove("pause");
+    startTime = Date.now();
+    toastTimeout = setTimeout(hideToast, remainingTime);
+  };
 }
 
 function hideToast(){
-
-var toast = document.getElementById("toast");
-
-toast.style.display="none";
-remainingTime = 6000;
-
+  var toast = document.getElementById("toast");
+  toast.style.display="none";
+  remainingTime = 6000;
 }
 
 function openModal(){ 
@@ -591,16 +490,15 @@ function openModal(){
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+  document.getElementById("modal").style.display="none";
 }
 
 function downloadPDF(){
-var link=document.createElement("a");
-link.href="evrak.pdf";
-link.download="evrak.pdf";
-link.click();
+  var link=document.createElement("a");
+  link.href="evrak.pdf";
+  link.download="evrak.pdf";
+  link.click();
 }
-
 </script>
 
 </body>
