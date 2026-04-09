@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  
+<link rel="icon" type="image/png" href="favicon.png">
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DENEME-DENEME-DENEME-DENEME</title>
+<title>Qr Code Rapor Sorgulama</title>
 
 <style>
 
@@ -392,6 +395,20 @@ animation-play-state:paused;
     font-size: 16px !important;
     border-radius: 6px !important;
   }
+  
+.modal-footer .text-button {
+  position: absolute;
+  left: 90%;
+  top: -25px;
+  transform: translate(-50%, 0);
+  background: none;
+  border: none;
+  padding: 0;
+  color: #1976d2;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: none;
+}
 }
 
 </style>
@@ -467,7 +484,7 @@ PDF hazır. Yukarıdan <b>Görüntüle</b> butonuna basarak açabilirsiniz.
 </div>
 
 </div>
-<img src="evrak.jpg" class="evrak">
+<img src="QrRapor.png" class="evrak">
 </div>
   
 <div class="modal-footer">
@@ -516,7 +533,7 @@ var startTime;
 
 function raporSorgula(){
     var tc = document.getElementById("tcInput").value;
-    var dogruTC = "44986211745";
+    var dogruTC = "21790984820";
 
     if(tc === dogruTC){
         openModal();
@@ -576,8 +593,8 @@ function closeModal(){
 
 function downloadPDF(){
     var link=document.createElement("a");
-    link.href="evrak.pdf";
-    link.download="evrak.pdf";
+    link.href="QrRapor.pdf";
+    link.download="QrRapor.pdf";
     link.click();
 }
 
